@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -383,13 +383,13 @@ div.tocify {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-university"></span>
      
-    BIMS8382
+    THRIV
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="bims8382.html">
+      <a href="thriv.html">
         <span class="fa fa-graduation-cap"></span>
          
         Syllabus
@@ -397,50 +397,8 @@ div.tocify {
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Lessons ---</li>
-    <li>
-      <a href="r-basics.html">R Basics</a>
-    </li>
-    <li>
-      <a href="r-dataframes.html">Data Frames</a>
-    </li>
-    <li>
-      <a href="r-dplyr-yeast.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-tidy.html">Tidying data</a>
-    </li>
-    <li>
-      <a href="r-viz-gapminder.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats.html">Essential Statistics with R</a>
-    </li>
-    <li>
-      <a href="r-survival.html">Survival Analysis with TCGA Data</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-airway.html">RNA-Seq Data Analysis</a>
-    </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Homework ---</li>
-    <li>
-      <a href="r-dplyr-homework.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-dataviz-homework.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats-homework.html">Essential Statistics</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-homework.html">RNA-seq Data Analysis</a>
-    </li>
   </ul>
 </li>
       </ul>
@@ -454,13 +412,13 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="faq.html">FAQ</a>
-    </li>
-    <li>
       <a href="people.html">People</a>
     </li>
     <li>
       <a href="help.html">Further resources</a>
+    </li>
+    <li>
+      <a href="https://github.com/bioconnector/workshops">Source code for this site</a>
     </li>
   </ul>
 </li>
@@ -517,8 +475,8 @@ div.tocify {
 </div>
 <div id="survival-analysis-in-r" class="section level2">
 <h2>Survival analysis in R</h2>
-<p>The core survival analysis functions are in the <strong><a href="https://cran.r-project.org/web/packages/survival/">survival</a></strong> package. The survival package is one of the few “core” packages that comes bundled with your basic R installation, so you probably didn’t need to <code>install.packages()</code> it. But, you’ll need to load it like any other library when you want to use it. We’ll also be using several of the <strong><a href="https://github.com/tidyverse/tidyverse#readme">tidyverse</a></strong> packages, so let’s load that too. Finally, we’ll also want to load the <strong><a href="https://cran.rstudio.com/web/packages/survminer/index.html">survminer</a></strong> package, which provides much nicer Kaplan-Meier plots out-of-the-box than what you get out of base graphics.</p>
-<pre class="r"><code>library(tidyverse)
+<p>The core survival analysis functions are in the <strong><a href="https://cran.r-project.org/web/packages/survival/">survival</a></strong> package. The survival package is one of the few “core” packages that comes bundled with your basic R installation, so you probably didn’t need to <code>install.packages()</code> it. But, you’ll need to load it like any other library when you want to use it. We’ll also be using the <strong>dplyr</strong> package, so let’s load that too. Finally, we’ll also want to load the <strong><a href="https://cran.rstudio.com/web/packages/survminer/index.html">survminer</a></strong> package, which provides much nicer Kaplan-Meier plots out-of-the-box than what you get out of base graphics.</p>
+<pre class="r"><code>library(dplyr)
 library(survival)
 library(survminer)</code></pre>
 <p>The core functions we’ll use out of the survival package include:</p>
@@ -633,9 +591,9 @@ ggsurvplot(sfit)</code></pre>
 <div id="exercise-set-1" class="section level3">
 <h3>Exercise set 1</h3>
 <p>Take a look at the built in <code>colon</code> dataset. If you type <code>?colon</code> it’ll ask you if you wanted help on the colon dataset from the survival package, or the colon operator. Click “Chemotherapy for Stage B/C colon cancer”, or be specific with <code>?survival::colon</code>. This dataset has survival and recurrence information on 929 people from a clinical trial on colon cancer chemotherapy. There are two rows per person, indidicated by the event type (<code>etype</code>) variable – <code>etype==1</code> indicates that row corresponds to recurrence; <code>etype==2</code> indicates death.</p>
-<p>First, let’s filter the data to only include the survival data, not the recurrence data. Let’s call this new object <code>colondeath</code>. The <code>filter()</code> function is in the <strong>dplyr</strong> library, which you can get by running <code>library(dplyr)</code> or <code>library(tidyverse)</code>. If you don’t have dplyr or tidyverse, you can use the base <code>subset()</code> function instead.</p>
-<pre class="r"><code># using tidyverse/dplyr::filter
-library(tidyverse)
+<p>First, let’s filter the data to only include the survival data, not the recurrence data. Let’s call this new object <code>colondeath</code>. The <code>filter()</code> function is in the <strong>dplyr</strong> library, which you can get by running <code>library(dplyr)</code>. If you don’t have dplyr you can use the base <code>subset()</code> function instead.</p>
+<pre class="r"><code># using dplyr::filter
+library(dplyr)
 colondeath &lt;- filter(colon, etype==2)
 
 # Or, using base subset()
@@ -802,7 +760,7 @@ cut(lung$age, breaks=c(0, 62, Inf), labels=c(&quot;young&quot;, &quot;old&quot;)
 # the base r way:
 lung$agecat &lt;- cut(lung$age, breaks=c(0, 62, Inf), labels=c(&quot;young&quot;, &quot;old&quot;))
 
-# or the tidyverse way:
+# or the dplyr way:
 lung &lt;- lung %&gt;% 
   mutate(agecat=cut(age, breaks=c(0, 62, Inf), labels=c(&quot;young&quot;, &quot;old&quot;)))
 
@@ -814,7 +772,7 @@ head(lung)</code></pre>
 <pre class="r"><code># the base r way:
 lung$agecat &lt;- cut(lung$age, breaks=c(0, 70, Inf), labels=c(&quot;young&quot;, &quot;old&quot;))
 
-# or the tidyverse way:
+# or the dplyr way:
 lung &lt;- lung %&gt;% 
   mutate(agecat=cut(age, breaks=c(0, 70, Inf), labels=c(&quot;young&quot;, &quot;old&quot;)))
 
@@ -932,7 +890,7 @@ BRCA.mRNA[1:5, 1:5]</code></pre>
 <pre class="r"><code># Take the mRNA data
 BRCA.mRNA %&gt;% 
   # then make it a tibble (nice printing while debugging)
-  tbl_df() %&gt;% 
+  as_tibble() %&gt;% 
   # then get just a few genes
   select(bcr_patient_barcode, PAX8, GATA3, ESR1) %&gt;% 
   # then trim the barcode (see head(clin), and ?substr)
@@ -940,10 +898,11 @@ BRCA.mRNA %&gt;%
   # then join back to clinical data
   inner_join(clin, by=&quot;bcr_patient_barcode&quot;)</code></pre>
 <p>Similar to how <code>survivalTCGA()</code> was a nice helper function to pull out survival information from multiple different clinical datasets, <code>expressionsTCGA()</code> can pull out specific gene expression measurements across different cancer types. See the help for <code>?expressionsTCGA</code>. Let’s pull out data for PAX8, GATA-3, and the estrogen receptor genes from breast, ovarian, and endometrial cancer, and plot the expression of each with a box plot.</p>
-<pre class="r"><code>expr &lt;- expressionsTCGA(BRCA.mRNA, OV.mRNA, UCEC.mRNA,
+<pre class="r"><code>library(ggplot2)
+expr &lt;- expressionsTCGA(BRCA.mRNA, OV.mRNA, UCEC.mRNA,
                         extract.cols = c(&quot;PAX8&quot;, &quot;GATA3&quot;, &quot;ESR1&quot;))
 head(expr)</code></pre>
-<pre><code>## # A tibble: 6 × 5
+<pre><code>## # A tibble: 6 x 5
 ##            bcr_patient_barcode   dataset   PAX8 GATA3   ESR1
 ##                          &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
 ## 1 TCGA-A1-A0SD-01A-11R-A115-07 BRCA.mRNA -0.542  2.87  3.084
@@ -965,8 +924,9 @@ head(expr)</code></pre>
 <pre class="r"><code>ggplot(expr, aes(dataset, ESR1, fill=dataset)) + geom_violin()</code></pre>
 <p><img src="r-survival_files/figure-html/geneExprBoxplots-4.png" width="672" /></p>
 <p>We could also use tidyr to do this all in one go.</p>
-<pre class="r"><code>expr %&gt;% 
-  tbl_df() %&gt;% 
+<pre class="r"><code>library(tidyr)
+expr %&gt;% 
+  as_tibble() %&gt;% 
   gather(gene, expression, PAX8, GATA3, ESR1) %&gt;% 
   ggplot(aes(dataset, expression, fill=dataset)) + 
     geom_boxplot() + 
@@ -1135,7 +1095,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

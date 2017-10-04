@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -19,9 +19,13 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <!-- Font Awesome -->
 <!-- <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" /> -->
 <!-- <script src="https://use.fontawesome.com/54ee8c2dfd.js"></script> -->
@@ -182,6 +186,107 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
@@ -278,13 +383,13 @@ $(document).ready(function () {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-university"></span>
      
-    BIMS8382
+    THRIV
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="bims8382.html">
+      <a href="thriv.html">
         <span class="fa fa-graduation-cap"></span>
          
         Syllabus
@@ -292,50 +397,8 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Lessons ---</li>
-    <li>
-      <a href="r-basics.html">R Basics</a>
-    </li>
-    <li>
-      <a href="r-dataframes.html">Data Frames</a>
-    </li>
-    <li>
-      <a href="r-dplyr-yeast.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-tidy.html">Tidying data</a>
-    </li>
-    <li>
-      <a href="r-viz-gapminder.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats.html">Essential Statistics with R</a>
-    </li>
-    <li>
-      <a href="r-survival.html">Survival Analysis with TCGA Data</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-airway.html">RNA-Seq Data Analysis</a>
-    </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Homework ---</li>
-    <li>
-      <a href="r-dplyr-homework.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-dataviz-homework.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats-homework.html">Essential Statistics</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-homework.html">RNA-seq Data Analysis</a>
-    </li>
   </ul>
 </li>
       </ul>
@@ -349,13 +412,13 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="faq.html">FAQ</a>
-    </li>
-    <li>
       <a href="people.html">People</a>
     </li>
     <li>
       <a href="help.html">Further resources</a>
+    </li>
+    <li>
+      <a href="https://github.com/bioconnector/workshops">Source code for this site</a>
     </li>
   </ul>
 </li>
@@ -376,13 +439,55 @@ $(document).ready(function () {
 <div id="workshops" class="section level3">
 <h3>Workshops</h3>
 <p>These workshops introduce methods, tools, and software for reproducibly managing, manipulating, analyzing, and visualizing large-scale biomedical data using the R statistical computing environment. Visit <a href="https://www.bioconnector.virginia.edu/workshops-and-events">bioconnector.virginia.edu</a> to register.</p>
-<p><strong><em>IMPORTANT</em>: <a href="setup.html">Click here for instructions on setting up your computer for any of these workshops</a>.</strong> Each workshop involves lots of hands-on practice coding, and you’ll need to download and install some free software <strong><em>prior to our first class</em></strong>. This may take up to an hour or so, and please do not hesitate to <a href="people.html">email us</a> <em>prior to the workshop</em> if you are having difficulty.</p>
+<p><strong><em>IMPORTANT</em>: <a href="setup.html">Click here for instructions on setting up your computer for any of these workshops</a>.</strong> Each workshop involves lots of hands-on practice coding, and you’ll need to download and install some free software <strong><em>prior to our first class</em></strong>. This may take up to an hour or so, and please do not hesitate to <a href="people.html">email one of the instructors</a> <em>prior to the workshop</em> if you are having difficulty.</p>
+</div>
+<div id="thriv-data-science" class="section level3">
+<h3>THRIV Data Science</h3>
+<p>The <a href="thriv.html">THRIV Scholars Data Science Training Program</a> is a seven-part series of courses on the essentials of biological data science directed toward junior faculty seeking a clinical and translational research career. Please see the <a href="thriv.html">THRIV syllabus</a> for more information.</p>
 </div>
 <div id="bims-8382" class="section level3">
 <h3>BIMS 8382</h3>
-<p><a href="bims8382.html">BIMS 8382</a> is a graduate class built in part on the workshop material here. Please see the <a href="bims8382.html">BIMS 8382 syllabus</a> for more information.</p>
+<p><a href="bims8382.html">BIMS 8382</a> is a graduate class that will run in Spring 2018. Please see the <a href="bims8382.html">BIMS 8382 syllabus</a> for more information.</p>
+</div>
+<div id="faq" class="section level3">
+<h3>FAQ</h3>
+<div id="whats-this-series-all-about" class="section level4">
+<h4>What’s this series all about?</h4>
+<p>Both the workshop series and the BIMS8382 course introduce methods, tools, and software for reproducibly managing, manipulating, analyzing, and visualizing large-scale biomedical data. Specifically, the course introduces the R statistical computing environment and packages for manipulating and visualizing high-dimensional data, covers strategies for reproducible research, and culminates with analyses of real experimental NGS data using R and Bioconductor packages.</p>
+<p><strong>This is not a <em>“Tool X”</em> or <em>“Software Y”</em> class.</strong> I want you to take away from this series the ability to use an extremely powerful scientific computing environment (R) to do many of the things that you’ll do <em>across study designs and disciplines</em> – managing, manipulating, visualizing, and analyzing large, sometimes high-dimensional data. Whether that data is gene expression data from yeast, microbial genomics data from <em>B. pertussis</em>, public health data from <a href="http://www.gapminder.org/">Gapminder</a>, RNA-seq data from humans, movie preference trends from Netflix, or truck routing data from FedEx, you’ll need the same computational know-how and data literacy to do the same kinds of basic tasks in each. I might show you how to use specific tools here and there (DESeq2 for RNA-seq analysis, ggtree for drawing phylogenetic trees, etc.), but these are not important – you probably won’t be using the same specific software or methods 10 years from now, but you’ll still use the same underlying data and computational foundation. <strong>That</strong> is the point of this series – to arm you with a basic foundation, and more importantly, to <strong>enable you to figure out how to use <em>this tool</em> or <em>that tool</em> on your own</strong>, when you need to.</p>
+<p><strong><em>This is not a statistics class.</em></strong> There is a short lesson on <a href="r-stats.html">essential statistics using R</a> but this 3-hour lesson offers neither a comprehensive background on underlying theory nor in-depth coverage of implementation strategies using R. Some general knowledge of statistics and study design is helpful, but isn’t required for this course.</p>
+</div>
+<div id="what-are-the-pre-requisites" class="section level4">
+<h4>What are the pre-requisites?</h4>
+<p>For the entire workshop series / BIMS8382 course, <em>there are none!</em></p>
+<p>But, if you’re taking these workshops piecemeal, <em>it depends on the class</em>. The introductory courses don’t assume any knowledge of programming or using a command-line interface, but if you’ve ever had any experience here, the content won’t come as so much of a shock. But <em>don’t panic.</em> Command-line interfaces and programming languages like R are <em>incredibly powerful</em> and will be utterly transformative on your research. There’s a learning curve, and it’s near-vertical in the beginning, but it’s surmountable and the payoff is worth it!</p>
+<p>The later classes in the R series (manipulation, tidy data, visualization, RNA-seq, phylogenetic trees, statistics, TCGA, Bioconductor, etc.) all require a working knowledge of R, dplyr, and ggplot2.</p>
+<p><a href="setup.html">(Be sure to see the required software setup and recommended reading on the setup page)</a>.</p>
+<!-- 
+## Can I audit this course?
+
+Yes! However, **_you will be expected to attend every class meeting, participate in coding exercises during class, and complete any and all assignments_**, just as if you are taking the course for credit. 
+
+**_UPDATE Feb 9 2016_**: The class is currently full.
+
+[Click here to register to request to audit](https://docs.google.com/forms/d/1tHO-X4DupnHgIEsUei0K3kX5_UfLRK-y2KfxmxC6Ux0/viewform). The first day of the course is Monday, Feb 15, 2016. One week prior to the course starting, I will allow anyone who's requested to audit into the course, giving priority to people registering for credit. There are still plenty of seats open, so good chances you'll be able to get in.
+-->
+<!--
+## Where will the class meet?
+
+Carter Classroom, Health Sciences Library room 1211. This is downstairs one floor to the right (across the hall from Stephen Turner's office).
+-->
+</div>
+<div id="do-i-need-a-laptop" class="section level4">
+<h4>Do I need a laptop?</h4>
+<p><strong><em>YES.</em></strong> You must have access to a computer on which you can install software. The class will be a mix of lecture, discussion, but primarily live coding. You must bring your laptop to each session. Bring your charging cable also. Please follow the <a href="setup.html">setup instructions</a> prior to the workshop.</p>
+</div>
+<div id="where-do-i-get-additional-help" class="section level4">
+<h4>Where do I get additional help?</h4>
+<p>Glad you asked! <a href="help.html">See here</a>.</p>
 <hr />
-<p><strong><em>Attribution</em>:</strong> Course material is inspired by and/or modified in part from <a href="http://stat545-ubc.github.io/">Jenny Bryan’s Stat 545 course</a>, <a href="http://software-carpentry.org/">Software Carpentry</a>, <a href="http://datacarpentry.org/">Data Carpentry</a>, <a href="http://varianceexplained.org/">David Robinson’s blog</a>, <a href="https://github.com/marschmi/NGS2015_RMarkdown_Reproducibility">Marian Schmidt’s MSU NGS Workshop</a>, <a href="http://biostat.mc.vanderbilt.edu/wiki/Main/DataSets?CGISESSID=10713f6d891653ddcbb7ddbdd9cffb79">Vanderbilt Department of BioStatistics Datasets</a>, and likely many others.</p>
+<p><small><strong><em>Attribution</em>:</strong> Course material is inspired by and/or modified in part from <a href="http://stat545-ubc.github.io/">Jenny Bryan’s Stat 545 course</a>, <a href="http://software-carpentry.org/">Software Carpentry</a>, <a href="http://datacarpentry.org/">Data Carpentry</a>, <a href="http://varianceexplained.org/">David Robinson’s blog</a>, <a href="https://github.com/marschmi/NGS2015_RMarkdown_Reproducibility">Marian Schmidt’s MSU NGS Workshop</a>, <a href="http://biostat.mc.vanderbilt.edu/wiki/Main/DataSets?CGISESSID=10713f6d891653ddcbb7ddbdd9cffb79">Vanderbilt Department of BioStatistics Datasets</a>, the <a href="http://bioconductor.org/packages/release/bioc/html/ggtree.html">ggtree vignettes</a>and likely many others.</small></p>
+</div>
 </div>
 
 <div class="footer">
@@ -396,6 +501,8 @@ For more information, visit <a href="https://www.bioconnector.virginia.edu/" tar
 </div>
 
 
+</div>
+</div>
 
 </div>
 
@@ -417,7 +524,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

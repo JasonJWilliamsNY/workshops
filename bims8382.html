@@ -4,14 +4,14 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
 
 
 
-<title>BIMS8382</title>
+<title>BIMS8382 Syllabus</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,6 +25,7 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <!-- Font Awesome -->
 <!-- <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" /> -->
 <!-- <script src="https://use.fontawesome.com/54ee8c2dfd.js"></script> -->
@@ -382,13 +383,13 @@ div.tocify {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-university"></span>
      
-    BIMS8382
+    THRIV
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="bims8382.html">
+      <a href="thriv.html">
         <span class="fa fa-graduation-cap"></span>
          
         Syllabus
@@ -396,50 +397,8 @@ div.tocify {
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Lessons ---</li>
-    <li>
-      <a href="r-basics.html">R Basics</a>
-    </li>
-    <li>
-      <a href="r-dataframes.html">Data Frames</a>
-    </li>
-    <li>
-      <a href="r-dplyr-yeast.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-tidy.html">Tidying data</a>
-    </li>
-    <li>
-      <a href="r-viz-gapminder.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats.html">Essential Statistics with R</a>
-    </li>
-    <li>
-      <a href="r-survival.html">Survival Analysis with TCGA Data</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-airway.html">RNA-Seq Data Analysis</a>
-    </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Homework ---</li>
-    <li>
-      <a href="r-dplyr-homework.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-dataviz-homework.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats-homework.html">Essential Statistics</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-homework.html">RNA-seq Data Analysis</a>
-    </li>
   </ul>
 </li>
       </ul>
@@ -453,13 +412,13 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="faq.html">FAQ</a>
-    </li>
-    <li>
       <a href="people.html">People</a>
     </li>
     <li>
       <a href="help.html">Further resources</a>
+    </li>
+    <li>
+      <a href="https://github.com/bioconnector/workshops">Source code for this site</a>
     </li>
   </ul>
 </li>
@@ -472,7 +431,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">BIMS8382</h1>
+<h1 class="title toc-ignore">BIMS8382 Syllabus</h1>
 
 </div>
 
@@ -481,11 +440,13 @@ div.tocify {
 <h2>General Information</h2>
 <p><strong>Lead Instructor:</strong> Stephen Turner, PhD</p>
 <p><strong>Co-instructor:</strong> VP Nagraj</p>
-<p><strong>When:</strong><br />
-Spring 2017 Module S1<br />
-Feb 13 - Mar 27, 2016<br />
-2:00pm - 5:00pm</p>
-<p><strong>Where:</strong> BIMS Education Center (McKim Hall)</p>
+<p><strong>When:</strong> Spring 2018 (more info TBA). <!--
+Spring 2017 Module S1  
+Feb 13 - Mar 27, 2017  
+2:00pm - 5:00pm  
+--></p>
+<p><strong>Where:</strong> TBA</p>
+<!-- **Where:** BIMS Education Center (McKim Hall) -->
 </div>
 <div id="course-schedule" class="section level2">
 <h2>Course Schedule</h2>
@@ -522,7 +483,9 @@ Feb 13 - Mar 27, 2016<br />
 <h2>FAQ</h2>
 <div id="whats-this-class-all-about" class="section level3">
 <h3>What’s this class all about?</h3>
-<p>This class introduces methods, tools, and software for reproducibly managing, manipulating, analyzing, and visualizing large-scale biomedical data. Specifically, the course introduces the R statistical computing environment and packages for manipulating and visualizing high-dimensional data, covers strategies for reproducible research, essential statistics and survival analysis, and culminates with analysis of data from a real RNA-seq experiment using R and Bioconductor packages.</p>
+<p>This class introduces methods, tools, and software for reproducibly managing, manipulating, analyzing, and visualizing large-scale biomedical data. Specifically, the course introduces the R statistical computing environment and packages for manipulating and visualizing high-dimensional data, covers strategies for reproducible research, essential statistics and survival analysis, and culminates with analyses of real experimental NGS data using R and Bioconductor packages.</p>
+<p><strong>This is not a <em>“Tool X”</em> or <em>“Software Y”</em> class.</strong> I want you to take away from this series the ability to use an extremely powerful scientific computing environment (R) to do many of the things that you’ll do <em>across study designs and disciplines</em> – managing, manipulating, visualizing, and analyzing large, sometimes high-dimensional data. Whether that data is gene expression data from yeast, microbial genomics data from <em>B. pertussis</em>, public health data from <a href="http://www.gapminder.org/">Gapminder</a>, RNA-seq data from humans, movie preference trends from Netflix, or truck routing data from FedEx, you’ll need the same computational know-how and data literacy to do the same kinds of basic tasks in each. I might show you how to use specific tools here and there (DESeq2 for RNA-seq analysis, ggtree for drawing phylogenetic trees, etc.), but these are not important – you probably won’t be using the same specific software or methods 10 years from now, but you’ll still use the same underlying data and computational foundation. <strong>That</strong> is the point of this series – to arm you with a basic foundation, and more importantly, to <strong>enable you to figure out how to use <em>this tool</em> or <em>that tool</em> on your own</strong>, when you need to.</p>
+<p><strong><em>This is not a statistics class.</em></strong> There is a short lesson on <a href="r-stats.html">essential statistics using R</a> but this 3-hour lesson offers neither a comprehensive background on underlying theory nor in-depth coverage of implementation strategies using R. Some general knowledge of statistics and study design is helpful, but isn’t required for this course.</p>
 </div>
 <div id="what-are-the-pre-requisites" class="section level3">
 <h3>What are the pre-requisites?</h3>
@@ -549,17 +512,20 @@ Feb 13 - Mar 27, 2016<br />
 </div>
 <div id="software-requirements" class="section level2">
 <h2>Software requirements</h2>
-<p>All the software we’re using in class is open-source and freely available online. This setup must be completed <em>prior to class</em>, as we will not have time for troubleshooting software installation issues during class. See the <a href="setup.html">setup instructions</a>, and follow all instructions under the major headings for:</p>
-<ul>
-<li><a href="setup.html#r">R</a></li>
-<li><a href="setup.html#r+rstudio+packages">R+RStudio+Packages</a></li>
-<li><a href="setup.html#bioconductor">Bioconductor</a></li>
-<li><a href="setup.html#rmarkdown">RMarkdown</a></li>
-<li><a href="setup.html#rna-seq">RNA-seq</a></li>
-<li><a href="setup.html#survival_analysis">Survival Analysis</a></li>
-<li><a href="setup.html#get_data">Getting data</a></li>
-</ul>
-<p>You’ll need to download <em>all</em> the data. As <a href="setup.html#get_data">described in the setup page</a>, navigate to the <a href="data.html">data page</a> and download <em>all</em> the relevant datasets, saving them to a folder that’s easy to find.</p>
+<p>All the software we’re using in class is open-source and freely available online. This setup must be completed <em>prior to class</em>, as we will not have time for troubleshooting software installation issues during class. See the <a href="setup.html">setup instructions</a>.</p>
+<!--
+, and follow all instructions under the major headings for:
+
+- [R](setup.html#r)
+- [R+RStudio+Packages](setup.html#r+rstudio+packages)
+- [Bioconductor](setup.html#bioconductor)
+- [RMarkdown](setup.html#rmarkdown)
+- [RNA-seq](setup.html#rna-seq)
+- [Survival Analysis](setup.html#survival_analysis)
+- [Getting data](setup.html#get_data)
+
+You'll need to download _all_ the data. As [described in the setup page](setup.html#get_data), navigate to the [data page](data.html) and download _all_ the relevant datasets, saving them to a folder that's easy to find.
+-->
 </div>
 
 <div class="footer">
@@ -596,7 +562,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

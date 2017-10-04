@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -383,13 +383,13 @@ div.tocify {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-university"></span>
      
-    BIMS8382
+    THRIV
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="bims8382.html">
+      <a href="thriv.html">
         <span class="fa fa-graduation-cap"></span>
          
         Syllabus
@@ -397,50 +397,8 @@ div.tocify {
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Lessons ---</li>
-    <li>
-      <a href="r-basics.html">R Basics</a>
-    </li>
-    <li>
-      <a href="r-dataframes.html">Data Frames</a>
-    </li>
-    <li>
-      <a href="r-dplyr-yeast.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-tidy.html">Tidying data</a>
-    </li>
-    <li>
-      <a href="r-viz-gapminder.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats.html">Essential Statistics with R</a>
-    </li>
-    <li>
-      <a href="r-survival.html">Survival Analysis with TCGA Data</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-airway.html">RNA-Seq Data Analysis</a>
-    </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Homework ---</li>
-    <li>
-      <a href="r-dplyr-homework.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-dataviz-homework.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats-homework.html">Essential Statistics</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-homework.html">RNA-seq Data Analysis</a>
-    </li>
   </ul>
 </li>
       </ul>
@@ -454,13 +412,13 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="faq.html">FAQ</a>
-    </li>
-    <li>
       <a href="people.html">People</a>
     </li>
     <li>
       <a href="help.html">Further resources</a>
+    </li>
+    <li>
+      <a href="https://github.com/bioconnector/workshops">Source code for this site</a>
     </li>
   </ul>
 </li>
@@ -496,7 +454,7 @@ div.tocify {
 <div id="stress-tests" class="section level2">
 <h2>Stress Tests</h2>
 <p>Dobutamine is a drug that is used during echocardiograms (aka “stress tests”), which are clinical tests used to estimate heart function. The treatment causes heart rate to increase, and its effects at different dosages were measured in a <a href="https://www.ncbi.nlm.nih.gov/pubmed/10080472">study published in 1999</a>.</p>
-<p>We’ll be using the data behind this paper to answer the questions that follow. Use the following to read and store the data directly from the web. Feel free to load dplyr+readr or tidyverse packages and use the <code>read_csv()</code> function instead of base R’s <code>read.csv()</code>.</p>
+<p>We’ll be using the data behind this paper to answer the questions that follow. Use the following to read and store the data directly from the web. Feel free to load dplyr+readr and use the <code>read_csv()</code> function instead of base R’s <code>read.csv()</code>.</p>
 <pre class="r"><code>stress &lt;- read.csv(&quot;http://biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/stressEcho.csv&quot;)</code></pre>
 <p>Note that in addition measuring dobutamine dosages during each stress test, the authors collected information on other variables including: resting heart rate, max heart rate, blood pressure, age and (most importantly) whether or not the patient experienced any cardiac event in the 12 months that followed the test.</p>
 <p><em>Before answering the questions, make sure to review the data dictionary</em>:</p>
@@ -561,7 +519,7 @@ div.tocify {
 ## data:  xt
 ## X-squared = 2, df = 2, p-value = 0.4</code></pre>
 <ol start="9" style="list-style-type: decimal">
-<li>Load the <strong>broom</strong> package and “tidy” the model output above.</li>
+<li>Load the <strong>broom</strong> package and “tidy” the model output above. If you don’t have the broom package, install it first.</li>
 </ol>
 <pre><code>##   statistic p.value parameter                     method
 ## 1      2.08   0.354         2 Pearson&#39;s Chi-squared test</code></pre>
@@ -600,14 +558,12 @@ div.tocify {
 ## -2.3512  -0.4151  -0.1539   0.0829   2.4006  
 ## 
 ## Coefficients:
-##              Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept) -25.95891    4.28709   -6.06  1.4e-09 ***
-## log(ck)       2.86251    0.65632    4.36  1.3e-05 ***
-## h             0.11280    0.02825    3.99  6.5e-05 ***
-## pk            0.10321    0.04378    2.36    0.018 *  
-## ld            0.01284    0.00526    2.44    0.015 *  
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+##              Estimate Std. Error z value Pr(&gt;|z|)
+## (Intercept) -25.95891    4.28709   -6.06  1.4e-09
+## log(ck)       2.86251    0.65632    4.36  1.3e-05
+## h             0.11280    0.02825    3.99  6.5e-05
+## pk            0.10321    0.04378    2.36    0.018
+## ld            0.01284    0.00526    2.44    0.015
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
@@ -658,7 +614,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

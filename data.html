@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -279,13 +279,13 @@ $(document).ready(function () {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-university"></span>
      
-    BIMS8382
+    THRIV
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="bims8382.html">
+      <a href="thriv.html">
         <span class="fa fa-graduation-cap"></span>
          
         Syllabus
@@ -293,50 +293,8 @@ $(document).ready(function () {
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Lessons ---</li>
-    <li>
-      <a href="r-basics.html">R Basics</a>
-    </li>
-    <li>
-      <a href="r-dataframes.html">Data Frames</a>
-    </li>
-    <li>
-      <a href="r-dplyr-yeast.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-tidy.html">Tidying data</a>
-    </li>
-    <li>
-      <a href="r-viz-gapminder.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats.html">Essential Statistics with R</a>
-    </li>
-    <li>
-      <a href="r-survival.html">Survival Analysis with TCGA Data</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-airway.html">RNA-Seq Data Analysis</a>
-    </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Homework ---</li>
-    <li>
-      <a href="r-dplyr-homework.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-dataviz-homework.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats-homework.html">Essential Statistics</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-homework.html">RNA-seq Data Analysis</a>
-    </li>
   </ul>
 </li>
       </ul>
@@ -350,13 +308,13 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="faq.html">FAQ</a>
-    </li>
-    <li>
       <a href="people.html">People</a>
     </li>
     <li>
       <a href="help.html">Further resources</a>
+    </li>
+    <li>
+      <a href="https://github.com/bioconnector/workshops">Source code for this site</a>
     </li>
   </ul>
 </li>
@@ -375,8 +333,12 @@ $(document).ready(function () {
 
 
 <ol style="list-style-type: decimal">
-<li><strong>Create a new folder</strong> somewhere on your computer that’s easy to get to (e.g., your Desktop). Name it <code>bioconnector</code>. Inside that folder, make a folder called <code>data</code>, all lowercase.</li>
-<li><strong>Download datasets as needed</strong>. Save these data files to the new <code>bioconnector/data</code> folder you just made. Click to download. If data displays in your browser, right-click and select <em>Save link as…</em> (or similar) to save to the desired location.</li>
+<li><strong>Option 1: Download all the data</strong>. Download and extract <strong><a href="data.zip">this zip file <i class="fa fa-file-archive-o" aria-hidden="true"></i></a></strong> (9.89 Mb) with all the data for the entire workshop. This may include additional datasets that we won’t use here.</li>
+<li><strong>Option 2: Download individual datasets as needed.</strong>
+<ul>
+<li>Create a new folder somewhere on your computer that’s easy to get to (e.g., your Desktop). Name it <code>workshop</code>. Inside that folder, make a folder called <code>data</code>, all lowercase.</li>
+<li>Download individual data files as needed, saving them to the new <code>workshop/data</code> folder you just made. Click to download. If data displays in your browser, right-click and select <em>Save link as…</em> (or similar) to save to the desired location.</li>
+</ul></li>
 </ol>
 <ul>
 <li><a href="data/airway_metadata.csv">airway_metadata.csv</a></li>
@@ -388,6 +350,9 @@ $(document).ready(function () {
 <li><a href="data/brauer2007_sysname2go.csv">brauer2007_sysname2go.csv</a></li>
 <li><a href="data/brauer2007_tidy.csv">brauer2007_tidy.csv</a></li>
 <li><a href="data/dmd.csv">dmd.csv</a></li>
+<li><a href="data/flu_aasequence.fasta">flu_aasequence.fasta</a></li>
+<li><a href="data/flu_genotype.csv">flu_genotype.csv</a></li>
+<li><a href="data/flu_tree_beast.tree">flu_tree_beast.tree</a></li>
 <li><a href="data/gapminder.csv">gapminder.csv</a></li>
 <li><a href="data/heartrate2dose.csv">heartrate2dose.csv</a></li>
 <li><a href="data/nhanes_dd.csv">nhanes_dd.csv</a></li>
@@ -395,6 +360,7 @@ $(document).ready(function () {
 <li><a href="data/SRP026387_metadata.csv">SRP026387_metadata.csv</a></li>
 <li><a href="data/SRP026387_scaledcounts.csv">SRP026387_scaledcounts.csv</a></li>
 <li><a href="data/stressEcho.csv">stressEcho.csv</a></li>
+<li><a href="data/tree_newick.nwk">tree_newick.nwk</a></li>
 </ul>
 
 <div class="footer">
@@ -429,7 +395,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -25,6 +25,7 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <!-- Font Awesome -->
 <!-- <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" /> -->
 <!-- <script src="https://use.fontawesome.com/54ee8c2dfd.js"></script> -->
@@ -382,13 +383,13 @@ div.tocify {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-university"></span>
      
-    BIMS8382
+    THRIV
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="bims8382.html">
+      <a href="thriv.html">
         <span class="fa fa-graduation-cap"></span>
          
         Syllabus
@@ -396,50 +397,8 @@ div.tocify {
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Lessons ---</li>
-    <li>
-      <a href="r-basics.html">R Basics</a>
-    </li>
-    <li>
-      <a href="r-dataframes.html">Data Frames</a>
-    </li>
-    <li>
-      <a href="r-dplyr-yeast.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-tidy.html">Tidying data</a>
-    </li>
-    <li>
-      <a href="r-viz-gapminder.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats.html">Essential Statistics with R</a>
-    </li>
-    <li>
-      <a href="r-survival.html">Survival Analysis with TCGA Data</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-airway.html">RNA-Seq Data Analysis</a>
-    </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Homework ---</li>
-    <li>
-      <a href="r-dplyr-homework.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-dataviz-homework.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats-homework.html">Essential Statistics</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-homework.html">RNA-seq Data Analysis</a>
-    </li>
   </ul>
 </li>
       </ul>
@@ -453,13 +412,13 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="faq.html">FAQ</a>
-    </li>
-    <li>
       <a href="people.html">People</a>
     </li>
     <li>
       <a href="help.html">Further resources</a>
+    </li>
+    <li>
+      <a href="https://github.com/bioconnector/workshops">Source code for this site</a>
     </li>
   </ul>
 </li>
@@ -527,9 +486,16 @@ div.tocify {
 <h3>Markdown / RMarkdown resources</h3>
 <ul>
 <li><a href="http://bioconnector.org/markdown">Basic Markdown + RMarkdown reference</a></li>
-<li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">RStudio’s RMarkdown Cheat Sheet</a> and <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">RMarkdown Reference Sheet</a></li>
-<li><a href="http://rmarkdown.rstudio.com/">RStudio’s RMarkdown documentation</a>: covers all the v2 enhancements to RMarkdown, <a href="http://rmarkdown.rstudio.com/authoring_basics.html">RMarkdown basics</a> in more detail than covered here, the full <a href="http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html">Pandoc Markdown specification</a> which lets you do more than just regular Markdown, information on <a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">citations and bibliographies</a>, and several <a href="http://rmarkdown.rstudio.com/articles.html">examples</a> illustrating advanced usage.</li>
-<li><a href="http://yihui.name/knitr/">knitr documentation</a>: has lots of useful reference material about how knitr works, <a href="http://yihui.name/knitr/options/">options</a>, controlling output, <a href="http://yihui.name/knitr/demos/">examples</a>, and more.</li>
+<li>In-browser markdown editors:
+<ul>
+<li>Minimal: <a href="http://bioconnector.org/markdown-editor">bioconnector.org/markdown-editor</a></li>
+<li>Better: <a href="http://stackedit.io">stackedit.io</a>, <a href="http://dillinger.io">dillinger.io</a></li>
+</ul></li>
+<li><a href="http://commonmark.org/help/">A good markdown reference</a></li>
+<li><a href="http://commonmark.org/help/tutorial/">A good 10-minute markdown tutorial</a></li>
+<li><a href="https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf">RStudio’s RMarkdown Cheat Sheet</a> and <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">RMarkdown Reference Sheet</a></li>
+<li><a href="http://rmarkdown.rstudio.com/">The RMarkdown documentation</a> has an excellent <a href="http://rmarkdown.rstudio.com/lesson-1.html">getting started guide</a>, a <a href="http://rmarkdown.rstudio.com/gallery.html">gallery of demos</a>, and several <a href="http://rmarkdown.rstudio.com/articles.html">articles</a> illustrating advanced usage.</li>
+<li><a href="http://yihui.name/knitr/">The knitr website</a> has lots of useful reference material about how knitr works, <a href="http://yihui.name/knitr/options/">options</a>, and more.</li>
 </ul>
 </div>
 </div>
@@ -587,7 +553,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

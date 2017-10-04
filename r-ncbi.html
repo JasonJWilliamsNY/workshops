@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -383,13 +383,13 @@ div.tocify {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-university"></span>
      
-    BIMS8382
+    THRIV
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="bims8382.html">
+      <a href="thriv.html">
         <span class="fa fa-graduation-cap"></span>
          
         Syllabus
@@ -397,50 +397,8 @@ div.tocify {
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Lessons ---</li>
-    <li>
-      <a href="r-basics.html">R Basics</a>
-    </li>
-    <li>
-      <a href="r-dataframes.html">Data Frames</a>
-    </li>
-    <li>
-      <a href="r-dplyr-yeast.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-tidy.html">Tidying data</a>
-    </li>
-    <li>
-      <a href="r-viz-gapminder.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats.html">Essential Statistics with R</a>
-    </li>
-    <li>
-      <a href="r-survival.html">Survival Analysis with TCGA Data</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-airway.html">RNA-Seq Data Analysis</a>
-    </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Homework ---</li>
-    <li>
-      <a href="r-dplyr-homework.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-dataviz-homework.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats-homework.html">Essential Statistics</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-homework.html">RNA-seq Data Analysis</a>
-    </li>
   </ul>
 </li>
       </ul>
@@ -454,13 +412,13 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="faq.html">FAQ</a>
-    </li>
-    <li>
       <a href="people.html">People</a>
     </li>
     <li>
       <a href="help.html">Further resources</a>
+    </li>
+    <li>
+      <a href="https://github.com/bioconnector/workshops">Source code for this site</a>
     </li>
   </ul>
 </li>
@@ -527,21 +485,22 @@ devtools::install_github(&quot;ropensci/rentrez&quot;)</code></pre>
 <p>One of the requirements for performing programmatic searches via <strong>rentrez</strong> is specification of the NCBI database to be searched. This is defined in the value passed to the “db” argument to <code>entrez_search()</code>, which we’ll introduce in the next section. But note that the “db” must be an exact match to one of the searchable databases in NCBI. To view a full list and their respective abbreviations use <code>entrez_dbs()</code>.</p>
 <pre class="r"><code>entrez_dbs()</code></pre>
 <pre><code>##  [1] &quot;pubmed&quot;          &quot;protein&quot;         &quot;nuccore&quot;        
-##  [4] &quot;nucleotide&quot;      &quot;nucgss&quot;          &quot;nucest&quot;         
-##  [7] &quot;structure&quot;       &quot;sparcle&quot;         &quot;genome&quot;         
-## [10] &quot;annotinfo&quot;       &quot;assembly&quot;        &quot;bioproject&quot;     
-## [13] &quot;biosample&quot;       &quot;blastdbinfo&quot;     &quot;books&quot;          
-## [16] &quot;cdd&quot;             &quot;clinvar&quot;         &quot;clone&quot;          
-## [19] &quot;gap&quot;             &quot;gapplus&quot;         &quot;grasp&quot;          
-## [22] &quot;dbvar&quot;           &quot;gene&quot;            &quot;gds&quot;            
-## [25] &quot;geoprofiles&quot;     &quot;homologene&quot;      &quot;medgen&quot;         
-## [28] &quot;mesh&quot;            &quot;ncbisearch&quot;      &quot;nlmcatalog&quot;     
-## [31] &quot;omim&quot;            &quot;orgtrack&quot;        &quot;pmc&quot;            
-## [34] &quot;popset&quot;          &quot;probe&quot;           &quot;proteinclusters&quot;
-## [37] &quot;pcassay&quot;         &quot;biosystems&quot;      &quot;pccompound&quot;     
-## [40] &quot;pcsubstance&quot;     &quot;pubmedhealth&quot;    &quot;seqannot&quot;       
-## [43] &quot;snp&quot;             &quot;sra&quot;             &quot;taxonomy&quot;       
-## [46] &quot;unigene&quot;         &quot;gencoll&quot;         &quot;gtr&quot;</code></pre>
+##  [4] &quot;ipg&quot;             &quot;nucleotide&quot;      &quot;nucgss&quot;         
+##  [7] &quot;nucest&quot;          &quot;structure&quot;       &quot;sparcle&quot;        
+## [10] &quot;genome&quot;          &quot;annotinfo&quot;       &quot;assembly&quot;       
+## [13] &quot;bioproject&quot;      &quot;biosample&quot;       &quot;blastdbinfo&quot;    
+## [16] &quot;books&quot;           &quot;cdd&quot;             &quot;clinvar&quot;        
+## [19] &quot;clone&quot;           &quot;gap&quot;             &quot;gapplus&quot;        
+## [22] &quot;grasp&quot;           &quot;dbvar&quot;           &quot;gene&quot;           
+## [25] &quot;gds&quot;             &quot;geoprofiles&quot;     &quot;homologene&quot;     
+## [28] &quot;medgen&quot;          &quot;mesh&quot;            &quot;ncbisearch&quot;     
+## [31] &quot;nlmcatalog&quot;      &quot;omim&quot;            &quot;orgtrack&quot;       
+## [34] &quot;pmc&quot;             &quot;popset&quot;          &quot;probe&quot;          
+## [37] &quot;proteinclusters&quot; &quot;pcassay&quot;         &quot;biosystems&quot;     
+## [40] &quot;pccompound&quot;      &quot;pcsubstance&quot;     &quot;pubmedhealth&quot;   
+## [43] &quot;seqannot&quot;        &quot;snp&quot;             &quot;sra&quot;            
+## [46] &quot;taxonomy&quot;        &quot;biocollections&quot;  &quot;unigene&quot;        
+## [49] &quot;gencoll&quot;         &quot;gtr&quot;</code></pre>
 <p>Each of these databases is configured to receive complex queries based on specific fields. You can view a given databases “searchable fields” with <code>entrez_db_searchable()</code>.</p>
 <pre class="r"><code>entrez_db_searchable(db = &quot;snp&quot;)</code></pre>
 <pre><code>## Searchable fields for database &#39;snp&#39;
@@ -787,17 +746,14 @@ nuclinkid &lt;- yfmlinks2$links$genome_nuccore</code></pre>
 ##  [1] assembly        bioproject      biosample       biosystems     
 ##  [5] books           cdd             clone           dbvar          
 ##  [9] gds             gene            genome          geoprofiles    
-## [13] homologene      ipg             mesh            nucest         
-## [17] nucgss          nuccore         pcassay         pccompound     
-## [21] pcsubstance     pmc             popset          probe          
-## [25] protein         protein         proteinclusters pubmed         
-## [29] pubmed          snp             sra             structure      
-## [33] unigene</code></pre>
-<p>There are 4 records for <em>Aedes aegypti</em> in NCBI’s nucleotide database … <code>entrez_fetch()</code> can pull down each in fasta format:</p>
+## [13] homologene      mesh            nucest          nucgss         
+## [17] nuccore         pcassay         pccompound      pcsubstance    
+## [21] pmc             popset          probe           protein        
+## [25] protein         proteinclusters pubmed          pubmed         
+## [29] snp             sra             structure       unigene</code></pre>
+<p>There are 12 records for <em>Aedes aegypti</em> in NCBI’s nucleotide database … <code>entrez_fetch()</code> can pull down each in fasta format:</p>
 <pre class="r"><code>yfmfasta &lt;- entrez_fetch(db = &quot;nuccore&quot;, id = nuclinkid, rettype = &quot;fasta&quot;)</code></pre>
-<p>Let’s take a look at one of the sequences:</p>
 <pre class="r"><code>strsplit(yfmfasta, &quot;&gt;&quot;)[[1]][1]</code></pre>
-<pre><code>## [1] &quot;EU352212.1 Aedes aegypti mitochondrion, complete genome\nAAAAAGATAAGCTAATTAAGCTATTGGGTTCATACCCCACTTATAAAGGTTATAATCCTTTTCTTTTTAA\nTTAAAAAAATCTCTAATAATATTTTTTTTATTATATTAATTTCAGGAACTTTAATTACCATTTCATCTAA\nTTCCTGATTAGGAGCTTGAATAGGATTAGAAATTAATTTACTTTCATTTATCCCCTTAATAAATGAAGGT\nAAAAAAAATCTAATAACTTCAGAAAGTAGTCTAAAATATTTTTTAACTCAAGCTTTCGCTTCTTCAATTT\nTATTATTTGCTATTATTTTAATAATAATATTTTTTAATGAAAATTGAATAATAAATA...&quot;</code></pre>
 </div>
 <div id="other-features" class="section level2">
 <h2>Other Features</h2>
@@ -806,7 +762,7 @@ nuclinkid &lt;- yfmlinks2$links$genome_nuccore</code></pre>
 <h3>web_history</h3>
 <p>As mentioned above, NCBI places limits on large queries to its databases. However, the servers allow users to store long lists of IDs as “web history” objects. When we ran our original <code>entrez_search()</code> we toggled “use_history” to TRUE. Because we did that, our original search object contains a “web_history” element.</p>
 <pre class="r"><code>res$web_history</code></pre>
-<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_17113...)</code></pre>
+<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_96591...)</code></pre>
 <p>So if we wanted to retrieve all records from our original search, regardless of how many there are, we can pass the web history object in the “web_history” argument to <code>entrez_fetch()</code> rather than a list of IDs.</p>
 <pre class="r"><code>recs &lt;- entrez_fetch(db = &quot;pubmed&quot;, web_history = res$web_history, rettype = &quot;xml&quot;, parsed = TRUE)</code></pre>
 <p>Did we get all of the titles?</p>
@@ -821,7 +777,7 @@ length(plosidtitles) == res$count</code></pre>
 <pre class="r"><code>res &lt;- entrez_search(db = &quot;clinvar&quot;, term= &quot;atherosclerosis[Disease/Phenotype]&quot;)
 postids &lt;- entrez_post(db = &quot;clinvar&quot;, res$ids)
 postids</code></pre>
-<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_10907...)</code></pre>
+<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_96888...)</code></pre>
 </div>
 <div id="entrez_info" class="section level3">
 <h3><code>entrez_info()</code></h3>
@@ -834,15 +790,15 @@ postids</code></pre>
 ##     &lt;DbName&gt;mesh&lt;/DbName&gt;
 ##     &lt;MenuName&gt;MeSH&lt;/MenuName&gt;
 ##     &lt;Description&gt;MeSH Database&lt;/Description&gt;
-##     &lt;DbBuild&gt;Build170327-0315.1&lt;/DbBuild&gt;
-##     &lt;Count&gt;269250&lt;/Count&gt;
-##     &lt;LastUpdate&gt;2017/03/27 03:40&lt;/LastUpdate&gt;
+##     &lt;DbBuild&gt;Build171004-0355.1&lt;/DbBuild&gt;
+##     &lt;Count&gt;272755&lt;/Count&gt;
+##     &lt;LastUpdate&gt;2017/10/04 04:22&lt;/LastUpdate&gt;
 ##     &lt;FieldList&gt;
 ##       &lt;Field&gt;
 ##         &lt;Name&gt;ALL&lt;/Name&gt;
 ##         &lt;FullName&gt;All Fields&lt;/FullName&gt;
 ##         &lt;Description&gt;All terms from all searchable fields&lt;/Description&gt;
-##         &lt;TermCount&gt;2314175&lt;/TermCount&gt;
+##         &lt;TermCount&gt;2333897&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;N&lt;/SingleToken&gt;
@@ -864,7 +820,7 @@ postids</code></pre>
 ##         &lt;Name&gt;FILT&lt;/Name&gt;
 ##         &lt;FullName&gt;Filter&lt;/FullName&gt;
 ##         &lt;Description&gt;Limits the records&lt;/Description&gt;
-##         &lt;TermCount&gt;15&lt;/TermCount&gt;
+##         &lt;TermCount&gt;16&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -875,7 +831,7 @@ postids</code></pre>
 ##         &lt;Name&gt;TN&lt;/Name&gt;
 ##         &lt;FullName&gt;Tree Number&lt;/FullName&gt;
 ##         &lt;Description&gt;Tree Number&lt;/Description&gt;
-##         &lt;TermCount&gt;298635&lt;/TermCount&gt;
+##         &lt;TermCount&gt;302140&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -897,7 +853,7 @@ postids</code></pre>
 ##         &lt;Name&gt;SUBS&lt;/Name&gt;
 ##         &lt;FullName&gt;Substance Name&lt;/FullName&gt;
 ##         &lt;Description&gt;Substance Name&lt;/Description&gt;
-##         &lt;TermCount&gt;575830&lt;/TermCount&gt;
+##         &lt;TermCount&gt;581696&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -908,7 +864,7 @@ postids</code></pre>
 ##         &lt;Name&gt;WORD&lt;/Name&gt;
 ##         &lt;FullName&gt;Text Word&lt;/FullName&gt;
 ##         &lt;Description&gt;Free text&lt;/Description&gt;
-##         &lt;TermCount&gt;1021792&lt;/TermCount&gt;
+##         &lt;TermCount&gt;1029283&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -941,7 +897,7 @@ postids</code></pre>
 ##         &lt;Name&gt;NOTE&lt;/Name&gt;
 ##         &lt;FullName&gt;Scope Note&lt;/FullName&gt;
 ##         &lt;Description&gt;Scope Note&lt;/Description&gt;
-##         &lt;TermCount&gt;443381&lt;/TermCount&gt;
+##         &lt;TermCount&gt;446594&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -952,7 +908,7 @@ postids</code></pre>
 ##         &lt;Name&gt;REG&lt;/Name&gt;
 ##         &lt;FullName&gt;Registry Number&lt;/FullName&gt;
 ##         &lt;Description&gt;Registry Number&lt;/Description&gt;
-##         &lt;TermCount&gt;100652&lt;/TermCount&gt;
+##         &lt;TermCount&gt;100630&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -963,7 +919,7 @@ postids</code></pre>
 ##         &lt;Name&gt;MULT&lt;/Name&gt;
 ##         &lt;FullName&gt;Multi&lt;/FullName&gt;
 ##         &lt;Description&gt;Multi&lt;/Description&gt;
-##         &lt;TermCount&gt;792130&lt;/TermCount&gt;
+##         &lt;TermCount&gt;797996&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -985,7 +941,7 @@ postids</code></pre>
 ##         &lt;Name&gt;MHUI&lt;/Name&gt;
 ##         &lt;FullName&gt;MeSH Unique ID&lt;/FullName&gt;
 ##         &lt;Description&gt;NLM MeSH Browser Unique ID&lt;/Description&gt;
-##         &lt;TermCount&gt;268690&lt;/TermCount&gt;
+##         &lt;TermCount&gt;272195&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -1083,7 +1039,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

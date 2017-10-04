@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -383,13 +383,13 @@ div.tocify {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-university"></span>
      
-    BIMS8382
+    THRIV
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="bims8382.html">
+      <a href="thriv.html">
         <span class="fa fa-graduation-cap"></span>
          
         Syllabus
@@ -397,50 +397,8 @@ div.tocify {
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Lessons ---</li>
-    <li>
-      <a href="r-basics.html">R Basics</a>
-    </li>
-    <li>
-      <a href="r-dataframes.html">Data Frames</a>
-    </li>
-    <li>
-      <a href="r-dplyr-yeast.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-tidy.html">Tidying data</a>
-    </li>
-    <li>
-      <a href="r-viz-gapminder.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats.html">Essential Statistics with R</a>
-    </li>
-    <li>
-      <a href="r-survival.html">Survival Analysis with TCGA Data</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-airway.html">RNA-Seq Data Analysis</a>
-    </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Homework ---</li>
-    <li>
-      <a href="r-dplyr-homework.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-dataviz-homework.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats-homework.html">Essential Statistics</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-homework.html">RNA-seq Data Analysis</a>
-    </li>
   </ul>
 </li>
       </ul>
@@ -454,13 +412,13 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="faq.html">FAQ</a>
-    </li>
-    <li>
       <a href="people.html">People</a>
     </li>
     <li>
       <a href="help.html">Further resources</a>
+    </li>
+    <li>
+      <a href="https://github.com/bioconnector/workshops">Source code for this site</a>
     </li>
   </ul>
 </li>
@@ -498,18 +456,18 @@ gm &lt;- read_csv(file=&quot;data/gapminder.csv&quot;)
 
 # Show the first few lines of the data
 gm</code></pre>
-<pre><code>## # A tibble: 1,704 × 6
+<pre><code>## # A tibble: 1,704 x 6
 ##        country continent  year lifeExp      pop gdpPercap
 ##          &lt;chr&gt;     &lt;chr&gt; &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
-## 1  Afghanistan      Asia  1952    28.8  8425333       779
-## 2  Afghanistan      Asia  1957    30.3  9240934       821
-## 3  Afghanistan      Asia  1962    32.0 10267083       853
-## 4  Afghanistan      Asia  1967    34.0 11537966       836
-## 5  Afghanistan      Asia  1972    36.1 13079460       740
-## 6  Afghanistan      Asia  1977    38.4 14880372       786
-## 7  Afghanistan      Asia  1982    39.9 12881816       978
-## 8  Afghanistan      Asia  1987    40.8 13867957       852
-## 9  Afghanistan      Asia  1992    41.7 16317921       649
+##  1 Afghanistan      Asia  1952    28.8  8425333       779
+##  2 Afghanistan      Asia  1957    30.3  9240934       821
+##  3 Afghanistan      Asia  1962    32.0 10267083       853
+##  4 Afghanistan      Asia  1967    34.0 11537966       836
+##  5 Afghanistan      Asia  1972    36.1 13079460       740
+##  6 Afghanistan      Asia  1977    38.4 14880372       786
+##  7 Afghanistan      Asia  1982    39.9 12881816       978
+##  8 Afghanistan      Asia  1987    40.8 13867957       852
+##  9 Afghanistan      Asia  1992    41.7 16317921       649
 ## 10 Afghanistan      Asia  1997    41.8 22227415       635
 ## # ... with 1,694 more rows</code></pre>
 <pre class="r"><code># Optionally bring up data in a viewer window.
@@ -526,7 +484,7 @@ gm</code></pre>
 </div>
 <div id="dplyr-review" class="section level3">
 <h3>dplyr review</h3>
-<p>The dplyr package gives you a handful of useful <strong>verbs</strong> for managing data. On their own they don’t do anything that base R can’t do. Here are some of the <em>single-table</em> verbs we’ll be working with in this lesson (single-table meaning that they only work on a single table – contrast that to <em>two-table</em> verbs used for joining data together). They all take a <code>data.frame</code> or <code>tbl_df</code> as their input for the first argument, and they all return a <code>data.frame</code> or <code>tbl_df</code> as output.</p>
+<p>The dplyr package gives you a handful of useful <strong>verbs</strong> for managing data. On their own they don’t do anything that base R can’t do. Here are some of the <em>single-table</em> verbs we’ll be working with in this lesson (single-table meaning that they only work on a single table – contrast that to <em>two-table</em> verbs used for joining data together). They all take a <code>data.frame</code> or <code>tbl</code> as their input for the first argument, and they all return a <code>data.frame</code> or <code>tbl</code> as output.</p>
 <ol style="list-style-type: decimal">
 <li><code>filter()</code>: filters <em>rows</em> of the data where some condition is true</li>
 <li><code>select()</code>: selects out particular <em>columns</em> of interest</li>
@@ -546,18 +504,18 @@ gm</code></pre>
   filter(continent==&quot;Asia&quot;) %&gt;%
   group_by(year) %&gt;%
   summarize(mean(lifeExp), mean(gdp))</code></pre>
-<pre><code>## # A tibble: 12 × 3
+<pre><code>## # A tibble: 12 x 3
 ##     year `mean(lifeExp)` `mean(gdp)`
 ##    &lt;int&gt;           &lt;dbl&gt;       &lt;dbl&gt;
-## 1   1952            46.3    3.41e+10
-## 2   1957            49.3    4.73e+10
-## 3   1962            51.6    6.01e+10
-## 4   1967            54.7    8.46e+10
-## 5   1972            57.3    1.24e+11
-## 6   1977            59.6    1.60e+11
-## 7   1982            62.6    1.94e+11
-## 8   1987            64.9    2.42e+11
-## 9   1992            66.5    3.07e+11
+##  1  1952            46.3    3.41e+10
+##  2  1957            49.3    4.73e+10
+##  3  1962            51.6    6.01e+10
+##  4  1967            54.7    8.46e+10
+##  5  1972            57.3    1.24e+11
+##  6  1977            59.6    1.60e+11
+##  7  1982            62.6    1.94e+11
+##  8  1987            64.9    2.42e+11
+##  9  1992            66.5    3.07e+11
 ## 10  1997            68.0    3.88e+11
 ## 11  2002            69.2    4.58e+11
 ## 12  2007            70.7    6.28e+11</code></pre>
@@ -784,7 +742,7 @@ p + theme_tufte()</code></pre>
 </div>
 <div id="homework" class="section level2">
 <h2>Homework</h2>
-<p>Looking for more practice? <a href="r-dataviz-homework.html">Try this homework assignment</a>.</p>
+<p>Looking for more practice? <a href="r-viz-homework.html">Try this homework assignment</a>.</p>
 <hr />
 </div>
 
@@ -822,7 +780,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

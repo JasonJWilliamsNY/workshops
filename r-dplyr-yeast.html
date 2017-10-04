@@ -4,7 +4,7 @@
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
@@ -383,13 +383,13 @@ div.tocify {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-university"></span>
      
-    BIMS8382
+    THRIV
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="bims8382.html">
+      <a href="thriv.html">
         <span class="fa fa-graduation-cap"></span>
          
         Syllabus
@@ -397,50 +397,8 @@ div.tocify {
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Lessons ---</li>
-    <li>
-      <a href="r-basics.html">R Basics</a>
-    </li>
-    <li>
-      <a href="r-dataframes.html">Data Frames</a>
-    </li>
-    <li>
-      <a href="r-dplyr-yeast.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-tidy.html">Tidying data</a>
-    </li>
-    <li>
-      <a href="r-viz-gapminder.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats.html">Essential Statistics with R</a>
-    </li>
-    <li>
-      <a href="r-survival.html">Survival Analysis with TCGA Data</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-airway.html">RNA-Seq Data Analysis</a>
-    </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Homework ---</li>
-    <li>
-      <a href="r-dplyr-homework.html">Data Manipulation</a>
-    </li>
-    <li>
-      <a href="r-dataviz-homework.html">Data Visualization</a>
-    </li>
-    <li>
-      <a href="r-rmarkdown-homework.html">Reproducible Research &amp; RMarkdown</a>
-    </li>
-    <li>
-      <a href="r-stats-homework.html">Essential Statistics</a>
-    </li>
-    <li>
-      <a href="r-rnaseq-homework.html">RNA-seq Data Analysis</a>
-    </li>
   </ul>
 </li>
       </ul>
@@ -454,13 +412,13 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="faq.html">FAQ</a>
-    </li>
-    <li>
       <a href="people.html">People</a>
     </li>
     <li>
       <a href="help.html">Further resources</a>
+    </li>
+    <li>
+      <a href="https://github.com/bioconnector/workshops">Source code for this site</a>
     </li>
   </ul>
 </li>
@@ -479,7 +437,8 @@ div.tocify {
 
 
 <p>Data analysis involves a large amount of <a href="http://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html">janitor work</a> – munging and cleaning data to facilitate downstream data analysis. This lesson demonstrates techniques for advanced data manipulation and analysis with the split-apply-combine strategy. We will use the dplyr package in R to effectively manipulate and conditionally compute summary statistics over subsets of a “big” dataset containing many observations.</p>
-<p>This lesson assumes a <a href="r-basics.html">basic familiarity with R</a> and <a href="r-dataframes.html">data frames</a>.</p>
+<p><strong>This lesson assumes a <a href="r-basics.html">basic familiarity with R</a> and <a href="r-dataframes.html">data frames</a>.</strong></p>
+<p><strong>Recommended reading:</strong> Review the <a href="http://r4ds.had.co.nz/tibbles.html#introduction-4"><em>Introduction</em> (10.1)</a> and <a href="http://r4ds.had.co.nz/tibbles.html#tibbles-vs.data.frame"><em>Tibbles vs. data.frame</em> (10.3)</a> sections of the <a href="http://r4ds.had.co.nz/tibbles.html"><strong><em>R for Data Science</em> book</strong></a>. We will initially be using the <code>read_*</code> functions from the <a href="http://readr.tidyverse.org/"><strong>readr</strong> package</a>. These functions load data into a <em>tibble</em> instead of R’s traditional data.frame. Tibbles are data frames, but they tweak some older behaviors to make life a little easier. These sections explain the few key small differences between traditional data.frames and tibbles.</p>
 <div id="review" class="section level2">
 <h2>Review</h2>
 <div id="our-data" class="section level3">
@@ -506,18 +465,18 @@ ydat
 
 # Optionally, bring up the data in a viewer window
 # View(ydat)</code></pre>
-<pre><code>## # A tibble: 198,430 × 7
+<pre><code>## # A tibble: 198,430 x 7
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-## 1    SFB2         YNL049C  Glucose  0.05      -0.24
-## 2    &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
-## 3    QRI7         YDL104C  Glucose  0.05      -0.02
-## 4    CFT2         YLR115W  Glucose  0.05      -0.33
-## 5    SSO2         YMR183C  Glucose  0.05       0.05
-## 6    PSP2         YML017W  Glucose  0.05      -0.69
-## 7    RIB2         YOL066C  Glucose  0.05      -0.55
-## 8   VMA13         YPR036W  Glucose  0.05      -0.75
-## 9    EDC3         YEL015W  Glucose  0.05      -0.24
+##  1   SFB2         YNL049C  Glucose  0.05      -0.24
+##  2   &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
+##  3   QRI7         YDL104C  Glucose  0.05      -0.02
+##  4   CFT2         YLR115W  Glucose  0.05      -0.33
+##  5   SSO2         YMR183C  Glucose  0.05       0.05
+##  6   PSP2         YML017W  Glucose  0.05      -0.69
+##  7   RIB2         YOL066C  Glucose  0.05      -0.55
+##  8  VMA13         YPR036W  Glucose  0.05      -0.75
+##  9   EDC3         YEL015W  Glucose  0.05      -0.24
 ## 10   VPS5         YOR069W  Glucose  0.05      -0.16
 ## # ... with 198,420 more rows, and 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 </div>
@@ -525,7 +484,12 @@ ydat
 <div id="the-dplyr-package" class="section level2">
 <h2>The dplyr package</h2>
 <p>The <a href="https://github.com/hadley/dplyr">dplyr package</a> is a relatively new R package that makes data manipulation fast and easy. It imports functionality from another package called magrittr that allows you to chain commands together into a pipeline that will completely change the way you write R code such that you’re writing code the way you’re thinking about the problem.</p>
-<p>When you read in data with the readr package (<code>read_csv()</code>) and you had the dplyr package loaded already, the data frame takes on this “special” class of data frames called a <code>tbl</code>, which you can see with <code>class(ydat)</code>. If you have other “regular” data frames in your workspace, the <code>tbl_df()</code> function will convert it into the special dplyr <code>tbl</code> that displays nicely (e.g.: <code>iris &lt;- tbl_df(iris)</code>). You don’t have to turn all your data frame objects into tbl_df objects, but it does make working with large datasets a bit easier.</p>
+<p>When you read in data with the readr package (<code>read_csv()</code>) and you had the dplyr package loaded already, the data frame takes on this “special” class of data frames called a <code>tbl</code> (pronounced “tibble”), which you can see with <code>class(ydat)</code>. If you have other “regular” data frames in your workspace, the <code>as_tibble()</code> function will convert it into the special dplyr <code>tbl</code> that displays nicely (e.g.: <code>iris &lt;- as_tibble(iris)</code>). You don’t have to turn all your data frame objects into tibbles, but it does make working with large datasets a bit easier.</p>
+<p>You can read more about tibbles in <a href="http://r4ds.had.co.nz/tibbles.html">Tibbles chapter in <em>R for Data Science</em></a> or in the <a href="https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html">tibbles vignette</a>. They keep most of the features of data frames, and drop the features that used to be convenient but are now frustrating (i.e. converting character vectors to factors). You can read more about the differences between data frames and tibbles in <a href="https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html#tibbles-vs-data-frames">this section of the tibbles vignette</a>, but the major convenience for us concerns <strong>printing</strong> (aka displaying) a tibble to the screen. When you print (i.e., display) a tibble, it only shows the first 10 rows and all the columns that fit on one screen. It also prints an abbreviated description of the column type. You can control the default appearance with options:</p>
+<ul>
+<li><code>options(tibble.print_max = n, tibble.print_min = m)</code>: if there are more than <em>n</em> rows, print only the first <em>m</em> rows. Use <code>options(tibble.print_max = Inf)</code> to always show all rows.</li>
+<li><code>options(tibble.width = Inf)</code> will always print all columns, regardless of the width of the screen.</li>
+</ul>
 </div>
 <div id="dplyr-verbs" class="section level2">
 <h2>dplyr verbs</h2>
@@ -538,7 +502,7 @@ ydat
 <li><code>summarize()</code></li>
 <li><code>group_by()</code></li>
 </ol>
-<p>They all take a <code>data.frame</code> or <code>tbl_df</code> as their input for the first argument, and they all return a <code>data.frame</code> or <code>tbl_df</code> as output.</p>
+<p>They all take a data frame or tibble as their input for the first argument, and they all return a data frame or tibble as output.</p>
 <div id="filter" class="section level3">
 <h3>filter()</h3>
 <p>If you want to filter <strong>rows</strong> of the data where some condition is true, use the <code>filter()</code> function.</p>
@@ -558,18 +522,18 @@ library(dplyr)
 
 # Look at a single gene involved in leucine synthesis pathway
 filter(ydat, symbol == &quot;LEU1&quot;)</code></pre>
-<pre><code>## # A tibble: 36 × 7
+<pre><code>## # A tibble: 36 x 7
 ##    symbol systematic_name nutrient  rate expression                   bp
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;                &lt;chr&gt;
-## 1    LEU1         YGL009C  Glucose  0.05      -1.12 leucine biosynthesis
-## 2    LEU1         YGL009C  Glucose  0.10      -0.77 leucine biosynthesis
-## 3    LEU1         YGL009C  Glucose  0.15      -0.67 leucine biosynthesis
-## 4    LEU1         YGL009C  Glucose  0.20      -0.59 leucine biosynthesis
-## 5    LEU1         YGL009C  Glucose  0.25      -0.20 leucine biosynthesis
-## 6    LEU1         YGL009C  Glucose  0.30       0.03 leucine biosynthesis
-## 7    LEU1         YGL009C  Ammonia  0.05      -0.76 leucine biosynthesis
-## 8    LEU1         YGL009C  Ammonia  0.10      -1.17 leucine biosynthesis
-## 9    LEU1         YGL009C  Ammonia  0.15      -1.20 leucine biosynthesis
+##  1   LEU1         YGL009C  Glucose  0.05      -1.12 leucine biosynthesis
+##  2   LEU1         YGL009C  Glucose  0.10      -0.77 leucine biosynthesis
+##  3   LEU1         YGL009C  Glucose  0.15      -0.67 leucine biosynthesis
+##  4   LEU1         YGL009C  Glucose  0.20      -0.59 leucine biosynthesis
+##  5   LEU1         YGL009C  Glucose  0.25      -0.20 leucine biosynthesis
+##  6   LEU1         YGL009C  Glucose  0.30       0.03 leucine biosynthesis
+##  7   LEU1         YGL009C  Ammonia  0.05      -0.76 leucine biosynthesis
+##  8   LEU1         YGL009C  Ammonia  0.10      -1.17 leucine biosynthesis
+##  9   LEU1         YGL009C  Ammonia  0.15      -1.20 leucine biosynthesis
 ## 10   LEU1         YGL009C  Ammonia  0.20      -1.02 leucine biosynthesis
 ## # ... with 26 more rows, and 1 more variables: mf &lt;chr&gt;</code></pre>
 <pre class="r"><code># Optionally, bring that result up in a View window
@@ -577,24 +541,24 @@ filter(ydat, symbol == &quot;LEU1&quot;)</code></pre>
 
 # Look at multiple genes
 filter(ydat, symbol==&quot;LEU1&quot; | symbol==&quot;ADH2&quot;)</code></pre>
-<pre><code>## # A tibble: 72 × 7
+<pre><code>## # A tibble: 72 x 7
 ##    symbol systematic_name nutrient  rate expression                   bp
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;                &lt;chr&gt;
-## 1    LEU1         YGL009C  Glucose  0.05      -1.12 leucine biosynthesis
-## 2    ADH2         YMR303C  Glucose  0.05       6.28        fermentation*
-## 3    LEU1         YGL009C  Glucose  0.10      -0.77 leucine biosynthesis
-## 4    ADH2         YMR303C  Glucose  0.10       5.81        fermentation*
-## 5    LEU1         YGL009C  Glucose  0.15      -0.67 leucine biosynthesis
-## 6    ADH2         YMR303C  Glucose  0.15       5.64        fermentation*
-## 7    LEU1         YGL009C  Glucose  0.20      -0.59 leucine biosynthesis
-## 8    ADH2         YMR303C  Glucose  0.20       5.10        fermentation*
-## 9    LEU1         YGL009C  Glucose  0.25      -0.20 leucine biosynthesis
+##  1   LEU1         YGL009C  Glucose  0.05      -1.12 leucine biosynthesis
+##  2   ADH2         YMR303C  Glucose  0.05       6.28        fermentation*
+##  3   LEU1         YGL009C  Glucose  0.10      -0.77 leucine biosynthesis
+##  4   ADH2         YMR303C  Glucose  0.10       5.81        fermentation*
+##  5   LEU1         YGL009C  Glucose  0.15      -0.67 leucine biosynthesis
+##  6   ADH2         YMR303C  Glucose  0.15       5.64        fermentation*
+##  7   LEU1         YGL009C  Glucose  0.20      -0.59 leucine biosynthesis
+##  8   ADH2         YMR303C  Glucose  0.20       5.10        fermentation*
+##  9   LEU1         YGL009C  Glucose  0.25      -0.20 leucine biosynthesis
 ## 10   ADH2         YMR303C  Glucose  0.25       1.89        fermentation*
 ## # ... with 62 more rows, and 1 more variables: mf &lt;chr&gt;</code></pre>
 <pre class="r"><code># Look at LEU1 expression at a low growth rate due to nutrient depletion
 # Notice how LEU1 is highly upregulated when leucine is depleted!
 filter(ydat, symbol==&quot;LEU1&quot; &amp; rate==.05)</code></pre>
-<pre><code>## # A tibble: 6 × 7
+<pre><code>## # A tibble: 6 x 7
 ##   symbol systematic_name  nutrient  rate expression                   bp
 ##    &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;                &lt;chr&gt;
 ## 1   LEU1         YGL009C   Glucose  0.05      -1.12 leucine biosynthesis
@@ -606,7 +570,7 @@ filter(ydat, symbol==&quot;LEU1&quot; &amp; rate==.05)</code></pre>
 ## # ... with 1 more variables: mf &lt;chr&gt;</code></pre>
 <pre class="r"><code># But expression goes back down when the growth/nutrient restriction is relaxed
 filter(ydat, symbol==&quot;LEU1&quot; &amp; rate==.3)</code></pre>
-<pre><code>## # A tibble: 6 × 7
+<pre><code>## # A tibble: 6 x 7
 ##   symbol systematic_name  nutrient  rate expression                   bp
 ##    &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;                &lt;chr&gt;
 ## 1   LEU1         YGL009C   Glucose   0.3       0.03 leucine biosynthesis
@@ -619,7 +583,7 @@ filter(ydat, symbol==&quot;LEU1&quot; &amp; rate==.3)</code></pre>
 <pre class="r"><code># Show only stats for LEU1 and Leucine depletion. 
 # LEU1 expression starts off high and drops
 filter(ydat, symbol==&quot;LEU1&quot; &amp; nutrient==&quot;Leucine&quot;)</code></pre>
-<pre><code>## # A tibble: 6 × 7
+<pre><code>## # A tibble: 6 x 7
 ##   symbol systematic_name nutrient  rate expression                   bp
 ##    &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;                &lt;chr&gt;
 ## 1   LEU1         YGL009C  Leucine  0.05       3.84 leucine biosynthesis
@@ -631,7 +595,7 @@ filter(ydat, symbol==&quot;LEU1&quot; &amp; nutrient==&quot;Leucine&quot;)</code
 ## # ... with 1 more variables: mf &lt;chr&gt;</code></pre>
 <pre class="r"><code># What about LEU1 expression with other nutrients being depleted?
 filter(ydat, symbol==&quot;LEU1&quot; &amp; nutrient==&quot;Glucose&quot;)</code></pre>
-<pre><code>## # A tibble: 6 × 7
+<pre><code>## # A tibble: 6 x 7
 ##   symbol systematic_name nutrient  rate expression                   bp
 ##    &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;                &lt;chr&gt;
 ## 1   LEU1         YGL009C  Glucose  0.05      -1.12 leucine biosynthesis
@@ -695,73 +659,73 @@ write_csv(leudat, &quot;leucinedata.csv&quot;)</code></pre>
 <p>The <code>filter()</code> function allows you to return only certain <em>rows</em> matching a condition. The <code>select()</code> function returns only certain <em>columns</em>. The first argument is the data, and subsequent arguments are the columns you want.</p>
 <pre class="r"><code># Select just the symbol and systematic_name
 select(ydat, symbol, systematic_name)</code></pre>
-<pre><code>## # A tibble: 198,430 × 2
+<pre><code>## # A tibble: 198,430 x 2
 ##    symbol systematic_name
 ##     &lt;chr&gt;           &lt;chr&gt;
-## 1    SFB2         YNL049C
-## 2    &lt;NA&gt;         YNL095C
-## 3    QRI7         YDL104C
-## 4    CFT2         YLR115W
-## 5    SSO2         YMR183C
-## 6    PSP2         YML017W
-## 7    RIB2         YOL066C
-## 8   VMA13         YPR036W
-## 9    EDC3         YEL015W
+##  1   SFB2         YNL049C
+##  2   &lt;NA&gt;         YNL095C
+##  3   QRI7         YDL104C
+##  4   CFT2         YLR115W
+##  5   SSO2         YMR183C
+##  6   PSP2         YML017W
+##  7   RIB2         YOL066C
+##  8  VMA13         YPR036W
+##  9   EDC3         YEL015W
 ## 10   VPS5         YOR069W
 ## # ... with 198,420 more rows</code></pre>
 <pre class="r"><code># Alternatively, just remove columns. Remove the bp and mf columns.
 select(ydat, -bp, -mf)</code></pre>
-<pre><code>## # A tibble: 198,430 × 5
+<pre><code>## # A tibble: 198,430 x 5
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-## 1    SFB2         YNL049C  Glucose  0.05      -0.24
-## 2    &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
-## 3    QRI7         YDL104C  Glucose  0.05      -0.02
-## 4    CFT2         YLR115W  Glucose  0.05      -0.33
-## 5    SSO2         YMR183C  Glucose  0.05       0.05
-## 6    PSP2         YML017W  Glucose  0.05      -0.69
-## 7    RIB2         YOL066C  Glucose  0.05      -0.55
-## 8   VMA13         YPR036W  Glucose  0.05      -0.75
-## 9    EDC3         YEL015W  Glucose  0.05      -0.24
+##  1   SFB2         YNL049C  Glucose  0.05      -0.24
+##  2   &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
+##  3   QRI7         YDL104C  Glucose  0.05      -0.02
+##  4   CFT2         YLR115W  Glucose  0.05      -0.33
+##  5   SSO2         YMR183C  Glucose  0.05       0.05
+##  6   PSP2         YML017W  Glucose  0.05      -0.69
+##  7   RIB2         YOL066C  Glucose  0.05      -0.55
+##  8  VMA13         YPR036W  Glucose  0.05      -0.75
+##  9   EDC3         YEL015W  Glucose  0.05      -0.24
 ## 10   VPS5         YOR069W  Glucose  0.05      -0.16
 ## # ... with 198,420 more rows</code></pre>
 <pre class="r"><code># Notice that the original data doesn&#39;t change!
 ydat</code></pre>
-<pre><code>## # A tibble: 198,430 × 7
+<pre><code>## # A tibble: 198,430 x 7
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-## 1    SFB2         YNL049C  Glucose  0.05      -0.24
-## 2    &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
-## 3    QRI7         YDL104C  Glucose  0.05      -0.02
-## 4    CFT2         YLR115W  Glucose  0.05      -0.33
-## 5    SSO2         YMR183C  Glucose  0.05       0.05
-## 6    PSP2         YML017W  Glucose  0.05      -0.69
-## 7    RIB2         YOL066C  Glucose  0.05      -0.55
-## 8   VMA13         YPR036W  Glucose  0.05      -0.75
-## 9    EDC3         YEL015W  Glucose  0.05      -0.24
+##  1   SFB2         YNL049C  Glucose  0.05      -0.24
+##  2   &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
+##  3   QRI7         YDL104C  Glucose  0.05      -0.02
+##  4   CFT2         YLR115W  Glucose  0.05      -0.33
+##  5   SSO2         YMR183C  Glucose  0.05       0.05
+##  6   PSP2         YML017W  Glucose  0.05      -0.69
+##  7   RIB2         YOL066C  Glucose  0.05      -0.55
+##  8  VMA13         YPR036W  Glucose  0.05      -0.75
+##  9   EDC3         YEL015W  Glucose  0.05      -0.24
 ## 10   VPS5         YOR069W  Glucose  0.05      -0.16
 ## # ... with 198,420 more rows, and 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 <p>Notice above how the original data doesn’t change. We’re selecting out only certain columns of interest and throwing away columns we don’t care about. If we wanted to <em>keep</em> this data, we would need to <em>reassign</em> the result of the <code>select()</code> operation to a new object. Let’s make a new object called <code>nogo</code> that does not contain the GO annotations. Notice again how the original data is unchanged.</p>
 <pre class="r"><code># create a new dataset without the go annotations.
 nogo &lt;- select(ydat, -bp, -mf)
 nogo</code></pre>
-<pre><code>## # A tibble: 198,430 × 5
+<pre><code>## # A tibble: 198,430 x 5
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-## 1    SFB2         YNL049C  Glucose  0.05      -0.24
-## 2    &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
-## 3    QRI7         YDL104C  Glucose  0.05      -0.02
-## 4    CFT2         YLR115W  Glucose  0.05      -0.33
-## 5    SSO2         YMR183C  Glucose  0.05       0.05
-## 6    PSP2         YML017W  Glucose  0.05      -0.69
-## 7    RIB2         YOL066C  Glucose  0.05      -0.55
-## 8   VMA13         YPR036W  Glucose  0.05      -0.75
-## 9    EDC3         YEL015W  Glucose  0.05      -0.24
+##  1   SFB2         YNL049C  Glucose  0.05      -0.24
+##  2   &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
+##  3   QRI7         YDL104C  Glucose  0.05      -0.02
+##  4   CFT2         YLR115W  Glucose  0.05      -0.33
+##  5   SSO2         YMR183C  Glucose  0.05       0.05
+##  6   PSP2         YML017W  Glucose  0.05      -0.69
+##  7   RIB2         YOL066C  Glucose  0.05      -0.55
+##  8  VMA13         YPR036W  Glucose  0.05      -0.75
+##  9   EDC3         YEL015W  Glucose  0.05      -0.24
 ## 10   VPS5         YOR069W  Glucose  0.05      -0.16
 ## # ... with 198,420 more rows</code></pre>
 <pre class="r"><code># we could filter this new dataset
 filter(nogo, symbol==&quot;LEU1&quot; &amp; rate==.05)</code></pre>
-<pre><code>## # A tibble: 6 × 5
+<pre><code>## # A tibble: 6 x 5
 ##   symbol systematic_name  nutrient  rate expression
 ##    &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
 ## 1   LEU1         YGL009C   Glucose  0.05      -1.12
@@ -772,18 +736,18 @@ filter(nogo, symbol==&quot;LEU1&quot; &amp; rate==.05)</code></pre>
 ## 6   LEU1         YGL009C    Uracil  0.05      -2.07</code></pre>
 <pre class="r"><code># Notice how the original data is unchanged - still have all 7 columns
 ydat</code></pre>
-<pre><code>## # A tibble: 198,430 × 7
+<pre><code>## # A tibble: 198,430 x 7
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-## 1    SFB2         YNL049C  Glucose  0.05      -0.24
-## 2    &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
-## 3    QRI7         YDL104C  Glucose  0.05      -0.02
-## 4    CFT2         YLR115W  Glucose  0.05      -0.33
-## 5    SSO2         YMR183C  Glucose  0.05       0.05
-## 6    PSP2         YML017W  Glucose  0.05      -0.69
-## 7    RIB2         YOL066C  Glucose  0.05      -0.55
-## 8   VMA13         YPR036W  Glucose  0.05      -0.75
-## 9    EDC3         YEL015W  Glucose  0.05      -0.24
+##  1   SFB2         YNL049C  Glucose  0.05      -0.24
+##  2   &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
+##  3   QRI7         YDL104C  Glucose  0.05      -0.02
+##  4   CFT2         YLR115W  Glucose  0.05      -0.33
+##  5   SSO2         YMR183C  Glucose  0.05       0.05
+##  6   PSP2         YML017W  Glucose  0.05      -0.69
+##  7   RIB2         YOL066C  Glucose  0.05      -0.55
+##  8  VMA13         YPR036W  Glucose  0.05      -0.75
+##  9   EDC3         YEL015W  Glucose  0.05      -0.24
 ## 10   VPS5         YOR069W  Glucose  0.05      -0.16
 ## # ... with 198,420 more rows, and 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 </div>
@@ -794,18 +758,18 @@ ydat</code></pre>
 <pre class="r"><code>mutate(nogo, signal=2^expression)</code></pre>
 <p>Mutate has a nice little feature too in that it’s “lazy.” You can mutate and add one variable, then continue mutating to add more variables based on that variable. Let’s make another column that’s the square root of the signal ratio.</p>
 <pre class="r"><code>mutate(nogo, signal=2^expression, sigsr=sqrt(signal))</code></pre>
-<pre><code>## # A tibble: 198,430 × 7
+<pre><code>## # A tibble: 198,430 x 7
 ##    symbol systematic_name nutrient  rate expression signal sigsr
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-## 1    SFB2         YNL049C  Glucose  0.05      -0.24  0.847 0.920
-## 2    &lt;NA&gt;         YNL095C  Glucose  0.05       0.28  1.214 1.102
-## 3    QRI7         YDL104C  Glucose  0.05      -0.02  0.986 0.993
-## 4    CFT2         YLR115W  Glucose  0.05      -0.33  0.796 0.892
-## 5    SSO2         YMR183C  Glucose  0.05       0.05  1.035 1.017
-## 6    PSP2         YML017W  Glucose  0.05      -0.69  0.620 0.787
-## 7    RIB2         YOL066C  Glucose  0.05      -0.55  0.683 0.826
-## 8   VMA13         YPR036W  Glucose  0.05      -0.75  0.595 0.771
-## 9    EDC3         YEL015W  Glucose  0.05      -0.24  0.847 0.920
+##  1   SFB2         YNL049C  Glucose  0.05      -0.24  0.847 0.920
+##  2   &lt;NA&gt;         YNL095C  Glucose  0.05       0.28  1.214 1.102
+##  3   QRI7         YDL104C  Glucose  0.05      -0.02  0.986 0.993
+##  4   CFT2         YLR115W  Glucose  0.05      -0.33  0.796 0.892
+##  5   SSO2         YMR183C  Glucose  0.05       0.05  1.035 1.017
+##  6   PSP2         YML017W  Glucose  0.05      -0.69  0.620 0.787
+##  7   RIB2         YOL066C  Glucose  0.05      -0.55  0.683 0.826
+##  8  VMA13         YPR036W  Glucose  0.05      -0.75  0.595 0.771
+##  9   EDC3         YEL015W  Glucose  0.05      -0.24  0.847 0.920
 ## 10   VPS5         YOR069W  Glucose  0.05      -0.16  0.895 0.946
 ## # ... with 198,420 more rows</code></pre>
 <p>Again, don’t worry about the code here to make the plot – we’ll learn about this later. Why do you think we log-transform the data prior to analysis?</p>
@@ -820,50 +784,50 @@ mutate(nogo, signal=2^expression, sigsr=sqrt(signal)) %&gt;%
 <p>The <code>arrange()</code> function does what it sounds like. It takes a data frame or tbl and arranges (or sorts) by column(s) of interest. The first argument is the data, and subsequent arguments are columns to sort on. Use the <code>desc()</code> function to arrange by descending.</p>
 <pre class="r"><code># arrange by gene symbol
 arrange(ydat, symbol)</code></pre>
-<pre><code>## # A tibble: 198,430 × 7
+<pre><code>## # A tibble: 198,430 x 7
 ##    symbol systematic_name nutrient  rate expression                   bp
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;                &lt;chr&gt;
-## 1    AAC1         YMR056C  Glucose  0.05       1.50 aerobic respiration*
-## 2    AAC1         YMR056C  Glucose  0.10       1.54 aerobic respiration*
-## 3    AAC1         YMR056C  Glucose  0.15       1.16 aerobic respiration*
-## 4    AAC1         YMR056C  Glucose  0.20       1.04 aerobic respiration*
-## 5    AAC1         YMR056C  Glucose  0.25       0.84 aerobic respiration*
-## 6    AAC1         YMR056C  Glucose  0.30       0.01 aerobic respiration*
-## 7    AAC1         YMR056C  Ammonia  0.05       0.80 aerobic respiration*
-## 8    AAC1         YMR056C  Ammonia  0.10       1.47 aerobic respiration*
-## 9    AAC1         YMR056C  Ammonia  0.15       0.97 aerobic respiration*
+##  1   AAC1         YMR056C  Glucose  0.05       1.50 aerobic respiration*
+##  2   AAC1         YMR056C  Glucose  0.10       1.54 aerobic respiration*
+##  3   AAC1         YMR056C  Glucose  0.15       1.16 aerobic respiration*
+##  4   AAC1         YMR056C  Glucose  0.20       1.04 aerobic respiration*
+##  5   AAC1         YMR056C  Glucose  0.25       0.84 aerobic respiration*
+##  6   AAC1         YMR056C  Glucose  0.30       0.01 aerobic respiration*
+##  7   AAC1         YMR056C  Ammonia  0.05       0.80 aerobic respiration*
+##  8   AAC1         YMR056C  Ammonia  0.10       1.47 aerobic respiration*
+##  9   AAC1         YMR056C  Ammonia  0.15       0.97 aerobic respiration*
 ## 10   AAC1         YMR056C  Ammonia  0.20       0.76 aerobic respiration*
 ## # ... with 198,420 more rows, and 1 more variables: mf &lt;chr&gt;</code></pre>
 <pre class="r"><code># arrange by expression (default: increasing)
 arrange(ydat, expression)</code></pre>
-<pre><code>## # A tibble: 198,430 × 7
+<pre><code>## # A tibble: 198,430 x 7
 ##    symbol systematic_name  nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-## 1    SUL1         YBR294W Phosphate  0.05      -6.50
-## 2    SUL1         YBR294W Phosphate  0.10      -6.34
-## 3    ADH2         YMR303C Phosphate  0.10      -6.15
-## 4    ADH2         YMR303C Phosphate  0.30      -6.04
-## 5    ADH2         YMR303C Phosphate  0.25      -5.89
-## 6    SUL1         YBR294W    Uracil  0.05      -5.55
-## 7    SFC1         YJR095W Phosphate  0.20      -5.52
-## 8    JEN1         YKL217W Phosphate  0.30      -5.44
-## 9    MHT1         YLL062C Phosphate  0.05      -5.36
+##  1   SUL1         YBR294W Phosphate  0.05      -6.50
+##  2   SUL1         YBR294W Phosphate  0.10      -6.34
+##  3   ADH2         YMR303C Phosphate  0.10      -6.15
+##  4   ADH2         YMR303C Phosphate  0.30      -6.04
+##  5   ADH2         YMR303C Phosphate  0.25      -5.89
+##  6   SUL1         YBR294W    Uracil  0.05      -5.55
+##  7   SFC1         YJR095W Phosphate  0.20      -5.52
+##  8   JEN1         YKL217W Phosphate  0.30      -5.44
+##  9   MHT1         YLL062C Phosphate  0.05      -5.36
 ## 10   SFC1         YJR095W Phosphate  0.25      -5.35
 ## # ... with 198,420 more rows, and 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 <pre class="r"><code># arrange by decreasing expression
 arrange(ydat, desc(expression))</code></pre>
-<pre><code>## # A tibble: 198,430 × 7
+<pre><code>## # A tibble: 198,430 x 7
 ##    symbol systematic_name  nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-## 1    GAP1         YKR039W   Ammonia  0.05       6.64
-## 2    DAL5         YJR152W   Ammonia  0.05       6.64
-## 3    GAP1         YKR039W   Ammonia  0.10       6.64
-## 4    DAL5         YJR152W   Ammonia  0.10       6.64
-## 5    DAL5         YJR152W   Ammonia  0.15       6.64
-## 6    DAL5         YJR152W   Ammonia  0.20       6.64
-## 7    DAL5         YJR152W   Ammonia  0.25       6.64
-## 8    DAL5         YJR152W   Ammonia  0.30       6.64
-## 9    GIT1         YCR098C Phosphate  0.05       6.64
+##  1   GAP1         YKR039W   Ammonia  0.05       6.64
+##  2   DAL5         YJR152W   Ammonia  0.05       6.64
+##  3   GAP1         YKR039W   Ammonia  0.10       6.64
+##  4   DAL5         YJR152W   Ammonia  0.10       6.64
+##  5   DAL5         YJR152W   Ammonia  0.15       6.64
+##  6   DAL5         YJR152W   Ammonia  0.20       6.64
+##  7   DAL5         YJR152W   Ammonia  0.25       6.64
+##  8   DAL5         YJR152W   Ammonia  0.30       6.64
+##  9   GIT1         YCR098C Phosphate  0.05       6.64
 ## 10   PHM6         YDR281C Phosphate  0.05       6.64
 ## # ... with 198,420 more rows, and 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 <hr />
@@ -881,31 +845,31 @@ arrange(ydat, desc(expression))</code></pre>
 <p>Notice that summarize takes a data frame and returns a data frame. In this case it’s a 1x1 data frame with a single row and a single column. The name of the column, by default is whatever the expression was used to summarize the data. This usually isn’t pretty, and if we wanted to work with this resulting data frame later on, we’d want to name that returned value something easier to deal with.</p>
 <pre class="r"><code># Get the mean expression for all genes
 summarize(ydat, mean(expression))</code></pre>
-<pre><code>## # A tibble: 1 × 1
+<pre><code>## # A tibble: 1 x 1
 ##   `mean(expression)`
 ##                &lt;dbl&gt;
 ## 1            0.00337</code></pre>
 <pre class="r"><code># Use a more friendly name, e.g., meanexp, or whatever you want to call it.
 summarize(ydat, meanexp=mean(expression))</code></pre>
-<pre><code>## # A tibble: 1 × 1
+<pre><code>## # A tibble: 1 x 1
 ##   meanexp
 ##     &lt;dbl&gt;
 ## 1 0.00337</code></pre>
 <pre class="r"><code># Measure the correlation between rate and expression 
 summarize(ydat, r=cor(rate, expression))</code></pre>
-<pre><code>## # A tibble: 1 × 1
+<pre><code>## # A tibble: 1 x 1
 ##        r
 ##    &lt;dbl&gt;
 ## 1 -0.022</code></pre>
 <pre class="r"><code># Get the number of observations
 summarize(ydat, n())</code></pre>
-<pre><code>## # A tibble: 1 × 1
+<pre><code>## # A tibble: 1 x 1
 ##    `n()`
 ##    &lt;int&gt;
 ## 1 198430</code></pre>
 <pre class="r"><code># The number of distinct gene symbols in the data 
 summarize(ydat, n_distinct(symbol))</code></pre>
-<pre><code>## # A tibble: 1 × 1
+<pre><code>## # A tibble: 1 x 1
 ##   `n_distinct(symbol)`
 ##                  &lt;int&gt;
 ## 1                 4211</code></pre>
@@ -914,76 +878,74 @@ summarize(ydat, n_distinct(symbol))</code></pre>
 <h3>group_by()</h3>
 <p>We saw that <code>summarize()</code> isn’t that useful on its own. Neither is <code>group_by()</code> All this does is takes an existing data frame and coverts it into a grouped data frame where operations are performed by group.</p>
 <pre class="r"><code>ydat</code></pre>
-<pre><code>## # A tibble: 198,430 × 7
+<pre><code>## # A tibble: 198,430 x 7
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-## 1    SFB2         YNL049C  Glucose  0.05      -0.24
-## 2    &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
-## 3    QRI7         YDL104C  Glucose  0.05      -0.02
-## 4    CFT2         YLR115W  Glucose  0.05      -0.33
-## 5    SSO2         YMR183C  Glucose  0.05       0.05
-## 6    PSP2         YML017W  Glucose  0.05      -0.69
-## 7    RIB2         YOL066C  Glucose  0.05      -0.55
-## 8   VMA13         YPR036W  Glucose  0.05      -0.75
-## 9    EDC3         YEL015W  Glucose  0.05      -0.24
+##  1   SFB2         YNL049C  Glucose  0.05      -0.24
+##  2   &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
+##  3   QRI7         YDL104C  Glucose  0.05      -0.02
+##  4   CFT2         YLR115W  Glucose  0.05      -0.33
+##  5   SSO2         YMR183C  Glucose  0.05       0.05
+##  6   PSP2         YML017W  Glucose  0.05      -0.69
+##  7   RIB2         YOL066C  Glucose  0.05      -0.55
+##  8  VMA13         YPR036W  Glucose  0.05      -0.75
+##  9   EDC3         YEL015W  Glucose  0.05      -0.24
 ## 10   VPS5         YOR069W  Glucose  0.05      -0.16
 ## # ... with 198,420 more rows, and 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 <pre class="r"><code>group_by(ydat, nutrient)</code></pre>
-<pre><code>## Source: local data frame [198,430 x 7]
-## Groups: nutrient [6]
-## 
+<pre><code>## # A tibble: 198,430 x 7
+## # Groups:   nutrient [6]
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-## 1    SFB2         YNL049C  Glucose  0.05      -0.24
-## 2    &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
-## 3    QRI7         YDL104C  Glucose  0.05      -0.02
-## 4    CFT2         YLR115W  Glucose  0.05      -0.33
-## 5    SSO2         YMR183C  Glucose  0.05       0.05
-## 6    PSP2         YML017W  Glucose  0.05      -0.69
-## 7    RIB2         YOL066C  Glucose  0.05      -0.55
-## 8   VMA13         YPR036W  Glucose  0.05      -0.75
-## 9    EDC3         YEL015W  Glucose  0.05      -0.24
+##  1   SFB2         YNL049C  Glucose  0.05      -0.24
+##  2   &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
+##  3   QRI7         YDL104C  Glucose  0.05      -0.02
+##  4   CFT2         YLR115W  Glucose  0.05      -0.33
+##  5   SSO2         YMR183C  Glucose  0.05       0.05
+##  6   PSP2         YML017W  Glucose  0.05      -0.69
+##  7   RIB2         YOL066C  Glucose  0.05      -0.55
+##  8  VMA13         YPR036W  Glucose  0.05      -0.75
+##  9   EDC3         YEL015W  Glucose  0.05      -0.24
 ## 10   VPS5         YOR069W  Glucose  0.05      -0.16
 ## # ... with 198,420 more rows, and 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 <pre class="r"><code>group_by(ydat, nutrient, rate)</code></pre>
-<pre><code>## Source: local data frame [198,430 x 7]
-## Groups: nutrient, rate [36]
-## 
+<pre><code>## # A tibble: 198,430 x 7
+## # Groups:   nutrient, rate [36]
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-## 1    SFB2         YNL049C  Glucose  0.05      -0.24
-## 2    &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
-## 3    QRI7         YDL104C  Glucose  0.05      -0.02
-## 4    CFT2         YLR115W  Glucose  0.05      -0.33
-## 5    SSO2         YMR183C  Glucose  0.05       0.05
-## 6    PSP2         YML017W  Glucose  0.05      -0.69
-## 7    RIB2         YOL066C  Glucose  0.05      -0.55
-## 8   VMA13         YPR036W  Glucose  0.05      -0.75
-## 9    EDC3         YEL015W  Glucose  0.05      -0.24
+##  1   SFB2         YNL049C  Glucose  0.05      -0.24
+##  2   &lt;NA&gt;         YNL095C  Glucose  0.05       0.28
+##  3   QRI7         YDL104C  Glucose  0.05      -0.02
+##  4   CFT2         YLR115W  Glucose  0.05      -0.33
+##  5   SSO2         YMR183C  Glucose  0.05       0.05
+##  6   PSP2         YML017W  Glucose  0.05      -0.69
+##  7   RIB2         YOL066C  Glucose  0.05      -0.55
+##  8  VMA13         YPR036W  Glucose  0.05      -0.75
+##  9   EDC3         YEL015W  Glucose  0.05      -0.24
 ## 10   VPS5         YOR069W  Glucose  0.05      -0.16
 ## # ... with 198,420 more rows, and 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 <p>The real power comes in where <code>group_by()</code> and <code>summarize()</code> are used together. First, write the <code>group_by()</code> statement. Then wrap the result of that with a call to <code>summarize()</code>.</p>
 <pre class="r"><code># Get the mean expression for each gene
 # group_by(ydat, symbol)
 summarize(group_by(ydat, symbol), meanexp=mean(expression))</code></pre>
-<pre><code>## # A tibble: 4,211 × 2
+<pre><code>## # A tibble: 4,211 x 2
 ##    symbol  meanexp
 ##     &lt;chr&gt;    &lt;dbl&gt;
-## 1    AAC1  0.52889
-## 2    AAC3 -0.21629
-## 3   AAD10  0.43833
-## 4   AAD14 -0.07167
-## 5   AAD16  0.24194
-## 6    AAD4 -0.79167
-## 7    AAD6  0.29028
-## 8    AAH1  0.04611
-## 9    AAP1 -0.00361
+##  1   AAC1  0.52889
+##  2   AAC3 -0.21629
+##  3  AAD10  0.43833
+##  4  AAD14 -0.07167
+##  5  AAD16  0.24194
+##  6   AAD4 -0.79167
+##  7   AAD6  0.29028
+##  8   AAH1  0.04611
+##  9   AAP1 -0.00361
 ## 10  AAP1&#39; -0.42139
 ## # ... with 4,201 more rows</code></pre>
 <pre class="r"><code># Get the correlation between rate and expression for each nutrient
 # group_by(ydat, nutrient)
 summarize(group_by(ydat, nutrient), r=cor(rate, expression))</code></pre>
-<pre><code>## # A tibble: 6 × 2
+<pre><code>## # A tibble: 6 x 2
 ##    nutrient       r
 ##       &lt;chr&gt;   &lt;dbl&gt;
 ## 1   Ammonia -0.0175
@@ -1001,7 +963,7 @@ summarize(group_by(ydat, nutrient), r=cor(rate, expression))</code></pre>
 <p>This is where things get awesome. The dplyr package imports functionality from the <a href="https://github.com/smbache/magrittr">magrittr</a> package that lets you <em>pipe</em> the output of one function to the input of another, so you can avoid nesting functions. It looks like this: <strong><code>%&gt;%</code></strong>. You don’t have to load the magrittr package to use it since dplyr imports its functionality when you load the dplyr package.</p>
 <p>Here’s the simplest way to use it. Remember the <code>tail()</code> function. It expects a data frame as input, and the next argument is the number of lines to print. These two commands are identical:</p>
 <pre class="r"><code>tail(ydat, 5)</code></pre>
-<pre><code>## # A tibble: 5 × 7
+<pre><code>## # A tibble: 5 x 7
 ##   symbol systematic_name nutrient  rate expression
 ##    &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
 ## 1   KRE1         YNL322C   Uracil   0.3       0.28
@@ -1011,7 +973,7 @@ summarize(group_by(ydat, nutrient), r=cor(rate, expression))</code></pre>
 ## 5   &lt;NA&gt;         YOL111C   Uracil   0.3       0.04
 ## # ... with 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 <pre class="r"><code>ydat %&gt;% tail(5)</code></pre>
-<pre><code>## # A tibble: 5 × 7
+<pre><code>## # A tibble: 5 x 7
 ##   symbol systematic_name nutrient  rate expression
 ##    &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
 ## 1   KRE1         YNL322C   Uracil   0.3       0.28
@@ -1022,33 +984,33 @@ summarize(group_by(ydat, nutrient), r=cor(rate, expression))</code></pre>
 ## # ... with 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 <p>Let’s use one of the dplyr verbs.</p>
 <pre class="r"><code>filter(ydat, nutrient==&quot;Leucine&quot;)</code></pre>
-<pre><code>## # A tibble: 33,178 × 7
+<pre><code>## # A tibble: 33,178 x 7
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-## 1    SFB2         YNL049C  Leucine  0.05       0.18
-## 2    &lt;NA&gt;         YNL095C  Leucine  0.05       0.16
-## 3    QRI7         YDL104C  Leucine  0.05      -0.30
-## 4    CFT2         YLR115W  Leucine  0.05      -0.27
-## 5    SSO2         YMR183C  Leucine  0.05      -0.59
-## 6    PSP2         YML017W  Leucine  0.05      -0.17
-## 7    RIB2         YOL066C  Leucine  0.05      -0.02
-## 8   VMA13         YPR036W  Leucine  0.05      -0.11
-## 9    EDC3         YEL015W  Leucine  0.05       0.12
+##  1   SFB2         YNL049C  Leucine  0.05       0.18
+##  2   &lt;NA&gt;         YNL095C  Leucine  0.05       0.16
+##  3   QRI7         YDL104C  Leucine  0.05      -0.30
+##  4   CFT2         YLR115W  Leucine  0.05      -0.27
+##  5   SSO2         YMR183C  Leucine  0.05      -0.59
+##  6   PSP2         YML017W  Leucine  0.05      -0.17
+##  7   RIB2         YOL066C  Leucine  0.05      -0.02
+##  8  VMA13         YPR036W  Leucine  0.05      -0.11
+##  9   EDC3         YEL015W  Leucine  0.05       0.12
 ## 10   VPS5         YOR069W  Leucine  0.05      -0.20
 ## # ... with 33,168 more rows, and 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 <pre class="r"><code>ydat %&gt;% filter(nutrient==&quot;Leucine&quot;)</code></pre>
-<pre><code>## # A tibble: 33,178 × 7
+<pre><code>## # A tibble: 33,178 x 7
 ##    symbol systematic_name nutrient  rate expression
 ##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-## 1    SFB2         YNL049C  Leucine  0.05       0.18
-## 2    &lt;NA&gt;         YNL095C  Leucine  0.05       0.16
-## 3    QRI7         YDL104C  Leucine  0.05      -0.30
-## 4    CFT2         YLR115W  Leucine  0.05      -0.27
-## 5    SSO2         YMR183C  Leucine  0.05      -0.59
-## 6    PSP2         YML017W  Leucine  0.05      -0.17
-## 7    RIB2         YOL066C  Leucine  0.05      -0.02
-## 8   VMA13         YPR036W  Leucine  0.05      -0.11
-## 9    EDC3         YEL015W  Leucine  0.05       0.12
+##  1   SFB2         YNL049C  Leucine  0.05       0.18
+##  2   &lt;NA&gt;         YNL095C  Leucine  0.05       0.16
+##  3   QRI7         YDL104C  Leucine  0.05      -0.30
+##  4   CFT2         YLR115W  Leucine  0.05      -0.27
+##  5   SSO2         YMR183C  Leucine  0.05      -0.59
+##  6   PSP2         YML017W  Leucine  0.05      -0.17
+##  7   RIB2         YOL066C  Leucine  0.05      -0.02
+##  8  VMA13         YPR036W  Leucine  0.05      -0.11
+##  9   EDC3         YEL015W  Leucine  0.05       0.12
 ## 10   VPS5         YOR069W  Leucine  0.05      -0.20
 ## # ... with 33,168 more rows, and 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 </div>
@@ -1086,7 +1048,7 @@ summarize(group_by(ydat, nutrient), r=cor(rate, expression))</code></pre>
     r=cor(rate, expression)), 
   r=round(r, 2)), 
 r)</code></pre>
-<pre><code>## # A tibble: 6 × 2
+<pre><code>## # A tibble: 6 x 2
 ##    nutrient     r
 ##       &lt;chr&gt; &lt;dbl&gt;
 ## 1   Leucine -0.58
@@ -1107,7 +1069,7 @@ r)</code></pre>
   summarize(r=cor(rate, expression)) %&gt;% 
   mutate(r=round(r,2)) %&gt;% 
   arrange(r)</code></pre>
-<pre><code>## # A tibble: 6 × 2
+<pre><code>## # A tibble: 6 x 2
 ##    nutrient     r
 ##       &lt;chr&gt; &lt;dbl&gt;
 ## 1   Leucine -0.58
@@ -1122,7 +1084,7 @@ r)</code></pre>
 <p><strong>EXERCISE 3</strong></p>
 <p>Here’s a warm-up round. Try the following.</p>
 <p>Show the limiting nutrient and expression values for the gene ADH2 when the growth rate is restricted to 0.05. <em>Hint:</em> 2 pipes: <code>filter</code> and <code>select</code>.</p>
-<pre><code>## # A tibble: 6 × 2
+<pre><code>## # A tibble: 6 x 2
 ##    nutrient expression
 ##       &lt;chr&gt;      &lt;dbl&gt;
 ## 1   Glucose       6.28
@@ -1132,7 +1094,7 @@ r)</code></pre>
 ## 5   Leucine       4.15
 ## 6    Uracil       0.63</code></pre>
 <p>What are the four most highly expressed genes when the growth rate is restricted to 0.05 by restricting glucose? Show only the symbol, expression value, and GO terms. <em>Hint:</em> 4 pipes: <code>filter</code>, <code>arrange</code>, <code>head</code>, and <code>select</code>.</p>
-<pre><code>## # A tibble: 4 × 4
+<pre><code>## # A tibble: 4 x 4
 ##   symbol expression                  bp                             mf
 ##    &lt;chr&gt;      &lt;dbl&gt;               &lt;chr&gt;                          &lt;chr&gt;
 ## 1   ADH2       6.28       fermentation* alcohol dehydrogenase activity
@@ -1140,7 +1102,7 @@ r)</code></pre>
 ## 3   MLS1       5.64    glyoxylate cycle       malate synthase activity
 ## 4   HXT5       5.56    hexose transport  glucose transporter activity*</code></pre>
 <p>When the growth rate is restricted to 0.05, what is the average expression level across all genes in the “response to stress” biological process, separately for each limiting nutrient? What about genes in the “protein biosynthesis” biological process? <em>Hint:</em> 3 pipes: <code>filter</code>, <code>group_by</code>, <code>summarize</code>.</p>
-<pre><code>## # A tibble: 6 × 2
+<pre><code>## # A tibble: 6 x 2
 ##    nutrient meanexp
 ##       &lt;chr&gt;   &lt;dbl&gt;
 ## 1   Ammonia   0.943
@@ -1149,7 +1111,7 @@ r)</code></pre>
 ## 4 Phosphate   0.981
 ## 5   Sulfate   0.743
 ## 6    Uracil   0.731</code></pre>
-<pre><code>## # A tibble: 6 × 2
+<pre><code>## # A tibble: 6 x 2
 ##    nutrient meanexp
 ##       &lt;chr&gt;   &lt;dbl&gt;
 ## 1   Ammonia  -1.613
@@ -1163,99 +1125,97 @@ r)</code></pre>
 <p>That was easy, right? How about some tougher ones.</p>
 <p>First, some review. How do we see the number of distinct values of a variable? Use <code>n_distinct()</code> within a <code>summarize()</code> call.</p>
 <pre class="r"><code>ydat %&gt;% summarize(n_distinct(mf))</code></pre>
-<pre><code>## # A tibble: 1 × 1
+<pre><code>## # A tibble: 1 x 1
 ##   `n_distinct(mf)`
 ##              &lt;int&gt;
 ## 1             1086</code></pre>
 <p>Which 10 biological process annotations have the most genes associated with them? What about molecular functions? <em>Hint:</em> 4 pipes: <code>group_by</code>, <code>summarize</code> with <code>n_distinct</code>, <code>arrange</code>, <code>head</code>.</p>
-<pre><code>## # A tibble: 10 × 2
+<pre><code>## # A tibble: 10 x 2
 ##                                                              bp     n
 ##                                                           &lt;chr&gt; &lt;int&gt;
-## 1                                    biological process unknown   269
-## 2                                          protein biosynthesis   182
-## 3                           protein amino acid phosphorylation*    78
-## 4                                         protein biosynthesis*    73
-## 5                        cell wall organization and biogenesis*    64
-## 6  regulation of transcription from RNA polymerase II promoter*    49
-## 7                        nuclear mRNA splicing, via spliceosome    47
-## 8                                                   DNA repair*    44
-## 9                                          aerobic respiration*    42
+##  1                                   biological process unknown   269
+##  2                                         protein biosynthesis   182
+##  3                          protein amino acid phosphorylation*    78
+##  4                                        protein biosynthesis*    73
+##  5                       cell wall organization and biogenesis*    64
+##  6 regulation of transcription from RNA polymerase II promoter*    49
+##  7                       nuclear mRNA splicing, via spliceosome    47
+##  8                                                  DNA repair*    44
+##  9                                         aerobic respiration*    42
 ## 10                                       ER to Golgi transport*    42</code></pre>
-<pre><code>## # A tibble: 10 × 2
+<pre><code>## # A tibble: 10 x 2
 ##                                        mf     n
 ##                                     &lt;chr&gt; &lt;int&gt;
-## 1              molecular function unknown   886
-## 2      structural constituent of ribosome   185
-## 3                         protein binding   107
-## 4                             RNA binding    63
-## 5                        protein binding*    53
-## 6                            DNA binding*    44
-## 7            structural molecule activity    43
-## 8                         GTPase activity    40
-## 9  structural constituent of cytoskeleton    39
+##  1             molecular function unknown   886
+##  2     structural constituent of ribosome   185
+##  3                        protein binding   107
+##  4                            RNA binding    63
+##  5                       protein binding*    53
+##  6                           DNA binding*    44
+##  7           structural molecule activity    43
+##  8                        GTPase activity    40
+##  9 structural constituent of cytoskeleton    39
 ## 10          transcription factor activity    38</code></pre>
 <p>How many distinct genes are there where we know what process the gene is involved in but we don’t know what it does? <em>Hint:</em> 3 pipes; <code>filter</code> where <code>bp!=&quot;biological process unknown&quot; &amp; mf==&quot;molecular function unknown&quot;</code>, and after <code>select</code>ing columns of interest, pipe the output to <code>distinct()</code>. The answer should be <strong>737</strong>, and here are a few:</p>
-<pre><code>## # A tibble: 737 × 3
+<pre><code>## # A tibble: 737 x 3
 ##    symbol                                                              bp
 ##     &lt;chr&gt;                                                           &lt;chr&gt;
-## 1    SFB2                                           ER to Golgi transport
-## 2    EDC3                           deadenylylation-independent decapping
-## 3    PER1                                   response to unfolded protein*
-## 4   PEX25                         peroxisome organization and biogenesis*
-## 5    BNI5                                                    cytokinesis*
-## 6   CSN12 adaptation to pheromone during conjugation with cellular fusion
-## 7   SEC39                                               secretory pathway
-## 8    ABC1                                         ubiquinone biosynthesis
-## 9   PRP46                          nuclear mRNA splicing, via spliceosome
+##  1   SFB2                                           ER to Golgi transport
+##  2   EDC3                           deadenylylation-independent decapping
+##  3   PER1                                   response to unfolded protein*
+##  4  PEX25                         peroxisome organization and biogenesis*
+##  5   BNI5                                                    cytokinesis*
+##  6  CSN12 adaptation to pheromone during conjugation with cellular fusion
+##  7  SEC39                                               secretory pathway
+##  8   ABC1                                         ubiquinone biosynthesis
+##  9  PRP46                          nuclear mRNA splicing, via spliceosome
 ## 10   MAM3                      mitochondrion organization and biogenesis*
 ## # ... with 727 more rows, and 1 more variables: mf &lt;chr&gt;</code></pre>
 <p>When the growth rate is restricted to 0.05 by limiting Glucose, which biological processes are the most upregulated? Show a sorted list with the most upregulated BPs on top, displaying the biological process and the average expression of all genes in that process rounded to two digits. <em>Hint:</em> 5 pipes: <code>filter</code>, <code>group_by</code>, <code>summarize</code>, <code>mutate</code>, <code>arrange</code>.</p>
-<pre><code>## # A tibble: 881 × 2
+<pre><code>## # A tibble: 881 x 2
 ##                                               bp meanexp
 ##                                            &lt;chr&gt;   &lt;dbl&gt;
-## 1                                  fermentation*    6.28
-## 2                               glyoxylate cycle    5.29
-## 3  oxygen and reactive oxygen species metabolism    5.04
-## 4                            fumarate transport*    5.03
-## 5                       acetyl-CoA biosynthesis*    4.32
-## 6                                gluconeogenesis    3.64
-## 7                      fatty acid beta-oxidation    3.57
-## 8                              lactate transport    3.48
-## 9                           carnitine metabolism    3.30
+##  1                                 fermentation*    6.28
+##  2                              glyoxylate cycle    5.29
+##  3 oxygen and reactive oxygen species metabolism    5.04
+##  4                           fumarate transport*    5.03
+##  5                      acetyl-CoA biosynthesis*    4.32
+##  6                               gluconeogenesis    3.64
+##  7                     fatty acid beta-oxidation    3.57
+##  8                             lactate transport    3.48
+##  9                          carnitine metabolism    3.30
 ## 10                           alcohol metabolism*    3.25
 ## # ... with 871 more rows</code></pre>
 <p>Group the data by limiting nutrient (primarily) then by biological process. Get the average expression for all genes annotated with each process, separately for each limiting nutrient, where the growth rate is restricted to 0.05. Arrange the result to show the most upregulated processes on top. The initial result will look like the result below. Pipe this output to a <code>View()</code> statement. What’s going on? Why didn’t the <code>arrange()</code> work? <em>Hint:</em> 5 pipes: <code>filter</code>, <code>group_by</code>, <code>summarize</code>, <code>arrange</code>, <code>View</code>.</p>
-<pre><code>## Source: local data frame [5,257 x 3]
-## Groups: nutrient [6]
-## 
+<pre><code>## # A tibble: 5,257 x 3
+## # Groups:   nutrient [6]
 ##     nutrient                                            bp meanexp
 ##        &lt;chr&gt;                                         &lt;chr&gt;   &lt;dbl&gt;
-## 1    Ammonia                          allantoate transport    6.64
-## 2    Ammonia                         amino acid transport*    6.64
-## 3  Phosphate               glycerophosphodiester transport    6.64
-## 4    Glucose                                 fermentation*    6.28
-## 5    Ammonia                           allantoin transport    5.56
-## 6    Glucose                              glyoxylate cycle    5.29
-## 7    Ammonia                           proline catabolism*    5.14
-## 8    Ammonia                                urea transport    5.14
-## 9    Glucose oxygen and reactive oxygen species metabolism    5.04
+##  1   Ammonia                          allantoate transport    6.64
+##  2   Ammonia                         amino acid transport*    6.64
+##  3 Phosphate               glycerophosphodiester transport    6.64
+##  4   Glucose                                 fermentation*    6.28
+##  5   Ammonia                           allantoin transport    5.56
+##  6   Glucose                              glyoxylate cycle    5.29
+##  7   Ammonia                           proline catabolism*    5.14
+##  8   Ammonia                                urea transport    5.14
+##  9   Glucose oxygen and reactive oxygen species metabolism    5.04
 ## 10   Glucose                           fumarate transport*    5.03
 ## # ... with 5,247 more rows</code></pre>
 <p>Let’s try to further process that result to get only the top three most upregulated biolgocal processes for each limiting nutrient. Google search “dplyr first result within group.” You’ll need a <code>filter(row_number()......)</code> in there somewhere. <em>Hint:</em> 5 pipes: <code>filter</code>, <code>group_by</code>, <code>summarize</code>, <code>arrange</code>, <code>filter(row_number()...</code>. <em>Note:</em> dplyr’s pipe syntax used to be <code>%.%</code> before it changed to <code>%&gt;%</code>. So when looking around, you might still see some people use the old syntax. Now if you try to use the old syntax, you’ll get a deprecation warning.</p>
-<pre><code>## Source: local data frame [18 x 3]
-## Groups: nutrient [6]
-## 
+<pre><code>## # A tibble: 18 x 3
+## # Groups:   nutrient [6]
 ##     nutrient                                            bp meanexp
 ##        &lt;chr&gt;                                         &lt;chr&gt;   &lt;dbl&gt;
-## 1    Ammonia                          allantoate transport    6.64
-## 2    Ammonia                         amino acid transport*    6.64
-## 3  Phosphate               glycerophosphodiester transport    6.64
-## 4    Glucose                                 fermentation*    6.28
-## 5    Ammonia                           allantoin transport    5.56
-## 6    Glucose                              glyoxylate cycle    5.29
-## 7    Glucose oxygen and reactive oxygen species metabolism    5.04
-## 8     Uracil                           fumarate transport*    4.32
-## 9  Phosphate                vacuole fusion, non-autophagic    4.20
+##  1   Ammonia                          allantoate transport    6.64
+##  2   Ammonia                         amino acid transport*    6.64
+##  3 Phosphate               glycerophosphodiester transport    6.64
+##  4   Glucose                                 fermentation*    6.28
+##  5   Ammonia                           allantoin transport    5.56
+##  6   Glucose                              glyoxylate cycle    5.29
+##  7   Glucose oxygen and reactive oxygen species metabolism    5.04
+##  8    Uracil                           fumarate transport*    4.32
+##  9 Phosphate                vacuole fusion, non-autophagic    4.20
 ## 10   Leucine                                 fermentation*    4.15
 ## 11 Phosphate         regulation of cell redox homeostasis*    4.03
 ## 12   Leucine                           fumarate transport*    3.72
@@ -1269,28 +1229,25 @@ r)</code></pre>
 <pre class="r"><code>ydat %&gt;% 
   group_by(nutrient, bp) %&gt;% 
   summarize(r=cor(rate, expression), ngenes=n_distinct(symbol))</code></pre>
-<pre><code>## Warning in cor(c(0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05,
-## 0.05, : the standard deviation is zero</code></pre>
-<pre><code>## Source: local data frame [5,286 x 4]
-## Groups: nutrient [?]
-## 
+<pre><code>## Warning in cor(rate, expression): the standard deviation is zero</code></pre>
+<pre><code>## # A tibble: 5,286 x 4
+## # Groups:   nutrient [?]
 ##    nutrient                                      bp       r ngenes
 ##       &lt;chr&gt;                                   &lt;chr&gt;   &lt;dbl&gt;  &lt;int&gt;
-## 1   Ammonia             &#39;de novo&#39; IMP biosynthesis*  0.3125      8
-## 2   Ammonia  &#39;de novo&#39; pyrimidine base biosynthesis -0.0482      3
-## 3   Ammonia &#39;de novo&#39; pyrimidine base biosynthesis*  0.1670      4
-## 4   Ammonia       35S primary transcript processing  0.5080     13
-## 5   Ammonia      35S primary transcript processing*  0.4240     30
-## 6   Ammonia                    acetate biosynthesis  0.4677      1
-## 7   Ammonia                      acetate metabolism  0.9291      1
-## 8   Ammonia                     acetate metabolism* -0.6855      1
-## 9   Ammonia                 acetyl-CoA biosynthesis -0.8512      1
+##  1  Ammonia             &#39;de novo&#39; IMP biosynthesis*  0.3125      8
+##  2  Ammonia  &#39;de novo&#39; pyrimidine base biosynthesis -0.0482      3
+##  3  Ammonia &#39;de novo&#39; pyrimidine base biosynthesis*  0.1670      4
+##  4  Ammonia       35S primary transcript processing  0.5080     13
+##  5  Ammonia      35S primary transcript processing*  0.4240     30
+##  6  Ammonia                    acetate biosynthesis  0.4677      1
+##  7  Ammonia                      acetate metabolism  0.9291      1
+##  8  Ammonia                     acetate metabolism* -0.6855      1
+##  9  Ammonia                 acetyl-CoA biosynthesis -0.8512      1
 ## 10  Ammonia   acetyl-CoA biosynthesis from pyruvate  0.0951      1
 ## # ... with 5,276 more rows</code></pre>
 <p>Take the above code and continue to process the result to show only results where the process has at least 5 genes. Add a column corresponding to the absolute value of the correlation coefficient, and show for each nutrient the singular process with the highest correlation between rate and expression, regardless of direction. <em>Hint:</em> 4 more pipes: <code>filter</code>, <code>mutate</code>, <code>arrange</code>, and <code>filter</code> again with <code>row_number()==1</code>. Ignore the warning.</p>
-<pre><code>## Source: local data frame [6 x 5]
-## Groups: nutrient [6]
-## 
+<pre><code>## # A tibble: 6 x 5
+## # Groups:   nutrient [6]
 ##    nutrient                                          bp     r ngenes  absr
 ##       &lt;chr&gt;                                       &lt;chr&gt; &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;
 ## 1   Glucose telomerase-independent telomere maintenance -0.95      7  0.95
@@ -1341,7 +1298,7 @@ $(document).ready(function () {
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
