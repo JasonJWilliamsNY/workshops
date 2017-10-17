@@ -1026,30 +1026,30 @@ rm(had1, had2)</code></pre>
 <pre><code>## [1] &quot;Python&quot;</code></pre>
 <p>We mentioned <code>sapply()</code> above, and now we can put it into action. This function will be useful in extracting the same child elements from different parents. To do so, we’ll need to define an anonymous function to apply across the list. Note that <em><code>sapply()</code> is similar to <code>lapply()</code> but always returns a vector, matrix or array rather than a list</em>.</p>
 <pre class="r"><code>sapply(had, function(x) x$watchers)</code></pre>
-<pre><code>##   [1]   24   13    0 1019    5   81   59    9    4  260    5   13    6    1
-##  [15]    0    8   12    1    0   15    6    6    5   35  115   21   21    4
-##  [29]   43  142    2    0   45    7 1537    5    3   17    1    0    1   90
-##  [43]    6  129    1    4   11    3    6   16    3   61    3    3    3   14
-##  [57]    8  401    4    4   72    7   26    3    8    9    0    6   28    3
-##  [71]    5    2    2    0   10    2    1   12    8   79    0    3    4   92
+<pre><code>##   [1]   24   13    0 1030    5   82   59   10    4  260    5   13    6    1
+##  [15]    0    8   12    1    0   15    6    6    5   35  117   21   22    4
+##  [29]   44  146    2    0   45    7 1545    5    3   17    1    0    1   91
+##  [43]    6  128    1    4   11    3    6   16    3   61    3    3    3   14
+##  [57]    8  407    5    4   72    7   26    3    8    9    0    6   28    3
+##  [71]    5    2    2    0   11    2    1   12    8   79    0    3    4   92
 ##  [85]    3    0   32    6   23   10    5    2   11    8    0   41   14  287
-##  [99]   10    3    9   27   38    3   39    4   29    0  255  469    4   63
-## [113]    6   22   30    9  125   58    6    3   96   31  182   55    2    6
-## [127]    1  177  891    8    6    4    1    1    0    5    1    0    4    1
-## [141]   30    1   21    3   14    0  159    5    6   10    0    1    1   13
-## [155]    4   22   28    1   10    7  842    2    0    8   88   91   30    0
-## [169]    3   22    0   14   25    5    1    4    7    3    5  125    1    2
-## [183]    6  433  193    7    2    1   23   19    1   26    4    8    1    1
-## [197]    0    4    0    8</code></pre>
+##  [99]   10    3    9   28   41    3   39    4    0  260  469    4   64    6
+## [113]   22   30    9  126   58    6    3   98   31  183   55    2    6    2
+## [127]  178  906    8    6    4    1    1    0    5    1    0    4    1   30
+## [141]    1   21    3   14    0  159    5    6   10    0    1    1   13    4
+## [155]   22   28    1   10    7  846    2    0    8   90   91   31    0    3
+## [169]   22    0   14   26    5    1    4    7    3    5  128    1    2    6
+## [183]  195    7    2    1   23   19    1   27    5    8    1    1    0    4
+## [197]    0    8    6    0</code></pre>
 <p>We’ve successfully extracted the child element of interest from each of the parent elements in the list. However, this vector could be hard to interpret since the elements are divorced from the larger context. One solution might be to assign names to the original list, which will give <code>sapply()</code> a named vector output.</p>
 <pre class="r"><code>names(had) &lt;- sapply(had, function(x) x$name)
 sapply(had, function(x) x$watchers)</code></pre>
 <pre><code>##  15-state-of-the-union      15-student-papers               500lines 
 ##                     24                     13                      0 
 ##                  adv-r                appdirs             assertthat 
-##                   1019                      5                     81 
+##                   1030                      5                     82 
 ##              babynames         beautiful-data                  bench 
-##                     59                      9                      4 
+##                     59                     10                      4 
 ##                 bigvis         bigvis-infovis         boxplots-paper 
 ##                    260                      5                     13 
 ##                  broom                builder             cellranger 
@@ -1061,19 +1061,19 @@ sapply(had, function(x) x$watchers)</code></pre>
 ##          cran-packages              cranatics             crantastic 
 ##                      6                      5                     35 
 ##        data-baby-names          data-counties      data-fuel-economy 
-##                    115                     21                     21 
+##                    117                     21                     22 
 ##               data-gbd    data-housing-crisis            data-movies 
-##                      4                     43                    142 
+##                      4                     44                    146 
 ##            data-stride               datafest                decumar 
 ##                      2                      0                     45 
 ##             densityvis               devtools           directlabels 
-##                      7                   1537                      5 
+##                      7                   1545                      5 
 ##              distpower                 docker                   docs 
 ##                      3                     17                      1 
 ##          dplyrimpaladb                   drat                 dtplyr 
-##                      0                      1                     90 
+##                      0                      1                     91 
 ##                eggnogr                    emo              example-r 
-##                      6                    129                      1 
+##                      6                    128                      1 
 ##              extrafont              fec-dplyr        fivethirtyeight 
 ##                      4                     11                      3 
 ##                fortify            fueleconomy                gdtools 
@@ -1083,7 +1083,7 @@ sapply(had, function(x) x$watchers)</code></pre>
 ##                 ggplot                ggplot1        ggplot2-bayarea 
 ##                      3                     14                      8 
 ##           ggplot2-book           ggplot2-docs          ggplot2movies 
-##                    401                      4                      4 
+##                    407                      5                      4 
 ##                 ggstat               ggthemes                 gtable 
 ##                     72                      7                     26 
 ##              gun-sales              hadladdin      hadley.github.com 
@@ -1093,7 +1093,7 @@ sapply(had, function(x) x$watchers)</code></pre>
 ##     herndon-ash-pollin               hflights      highlighting-kate 
 ##                      3                      5                      2 
 ##                httpbin                 httpuv                  ideas 
-##                      2                      0                     10 
+##                      2                      0                     11 
 ##              imvisoned                 kmeans                   l1tf 
 ##                      2                      1                     12 
 ##                 layers               lazyeval                leaflet 
@@ -1111,73 +1111,73 @@ sapply(had, function(x) x$watchers)</code></pre>
 ##                 mturkr             multidplyr                 mutatr 
 ##                     14                    287                     10 
 ##              mutatrGui            nasaweather                  neiss 
-##                      3                      9                     27 
+##                      3                      9                     28 
 ##           nycflights13               olctools            oldbookdown 
-##                     38                      3                     39 
-##                packman                 pillar               PivotalR 
-##                      4                     29                      0 
-##                pkgdown                   plyr              pop-flows 
-##                    255                    469                      4 
-##                 precis          prodplotpaper           productplots 
-##                     63                      6                     22 
-##                  profr                  proto                   pryr 
-##                     30                      9                    125 
-##               purrrlyr          qtpaint-demos      r-devel-san-clang 
-##                     58                      6                      3 
-##            r-internals            r-on-github                 r-pkgs 
-##                     96                     31                    182 
-##               r-python               r-source               r-travis 
-##                     55                      2                      6 
-##                 r-yaml                   r2d3                   r4ds 
-##                      1                    177                    891 
-##    ranking-correlation              rastermap                rblocks 
-##                      8                      6                      4 
-##                Rcereal                   Rcpp           rcpp-gallery 
-##                      1                      1                      0 
-##           RcppDateTime           rcpplonglong           RcppProgress 
-##                      5                      1                      0 
-##            rcrunchbase                  RCurl          reactive-docs 
-##                      4                      1                     30 
-##               ReadStat                recipes    redesigned-barnacle 
-##                      1                     21                      3 
-##                 remake                 reprex                reshape 
-##                     14                      0                    159 
-##                  rfmt2               rifftron                    rio 
-##                      5                      6                     10 
-## riotworkshop.github.io                  rJava              rmarkdown 
-##                      0                      1                      1 
-##                 rminds               roxygen2               roxygen3 
-##                     13                      4                     22 
-##                 rsmith                RSQLite                 rtweet 
-##                     28                      1                     10 
-##                    rv2                  rvest              rworldmap 
-##                      7                    842                      2 
-##                   rydn            scagnostics                 scales 
-##                      0                      8                     88 
-##                 secure              sfhousing                    sfr 
-##                     91                     30                      0 
-##                  shiny           shinySignals               simpleS4 
-##                      3                     22                      0 
-##               sinartra                  sloop             spatialVis 
-##                     14                     25                      5 
-##               sqlutils       stat405-practice      stat405-resources 
-##                      1                      4                      7 
-##  STAT545-UBC.github.io             stationaRy                 strict 
-##                      3                      5                    125 
-##              strptimer                syuzhet              tanglekit 
-##                      1                      2                      6 
-##               testthat              tidy-data                toc-vis 
-##                    433                    193                      7 
-##               unittest          USAboundaries          usdanutrients 
-##                      2                      1                     23 
-##                  vctrs                   vega                vis-eda 
-##                     19                      1                     26 
-##          vis-migration                   vita                warncpp 
-##                      4                      8                      1 
-##               webreadr                 webuse                 weeder 
+##                     41                      3                     39 
+##                packman               PivotalR                pkgdown 
+##                      4                      0                    260 
+##                   plyr              pop-flows                 precis 
+##                    469                      4                     64 
+##          prodplotpaper           productplots                  profr 
+##                      6                     22                     30 
+##                  proto                   pryr               purrrlyr 
+##                      9                    126                     58 
+##          qtpaint-demos      r-devel-san-clang            r-internals 
+##                      6                      3                     98 
+##            r-on-github                 r-pkgs               r-python 
+##                     31                    183                     55 
+##               r-source               r-travis                 r-yaml 
+##                      2                      6                      2 
+##                   r2d3                   r4ds    ranking-correlation 
+##                    178                    906                      8 
+##              rastermap                rblocks                Rcereal 
+##                      6                      4                      1 
+##                   Rcpp           rcpp-gallery           RcppDateTime 
+##                      1                      0                      5 
+##           rcpplonglong           RcppProgress            rcrunchbase 
 ##                      1                      0                      4 
-##         weight-and-see            wesanderson 
-##                      0                      8</code></pre>
+##                  RCurl          reactive-docs               ReadStat 
+##                      1                     30                      1 
+##                recipes    redesigned-barnacle                 remake 
+##                     21                      3                     14 
+##                 reprex                reshape                  rfmt2 
+##                      0                    159                      5 
+##               rifftron                    rio riotworkshop.github.io 
+##                      6                     10                      0 
+##                  rJava              rmarkdown                 rminds 
+##                      1                      1                     13 
+##               roxygen2               roxygen3                 rsmith 
+##                      4                     22                     28 
+##                RSQLite                 rtweet                    rv2 
+##                      1                     10                      7 
+##                  rvest              rworldmap                   rydn 
+##                    846                      2                      0 
+##            scagnostics                 scales                 secure 
+##                      8                     90                     91 
+##              sfhousing                    sfr                  shiny 
+##                     31                      0                      3 
+##           shinySignals               simpleS4               sinartra 
+##                     22                      0                     14 
+##                  sloop             spatialVis               sqlutils 
+##                     26                      5                      1 
+##       stat405-practice      stat405-resources  STAT545-UBC.github.io 
+##                      4                      7                      3 
+##             stationaRy                 strict              strptimer 
+##                      5                    128                      1 
+##                syuzhet              tanglekit              tidy-data 
+##                      2                      6                    195 
+##                toc-vis               unittest          USAboundaries 
+##                      7                      2                      1 
+##          usdanutrients                  vctrs                   vega 
+##                     23                     19                      1 
+##                vis-eda          vis-migration                   vita 
+##                     27                      5                      8 
+##                warncpp               webreadr                 webuse 
+##                      1                      1                      0 
+##                 weeder         weight-and-see            wesanderson 
+##                      4                      0                      8 
+##                whisker               wishlist 
+##                      6                      0</code></pre>
 </div>
 <div id="exercise" class="section level3">
 <h3>Exercise</h3>

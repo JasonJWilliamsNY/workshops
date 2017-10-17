@@ -626,31 +626,6 @@ devtools::install_github(&quot;ropensci/rentrez&quot;)</code></pre>
 <p>XML documents are arranged as “trees” or “document object models (DOM)” … these must be traversed in order to find the information of interest. We need to define a starting point in that structure using XPath<a href="#fn9" class="footnoteRef" id="fnref9"><sup>9</sup></a>. The <code>//</code> and <code>/</code> syntax helps point the query to the appropriate context in the document.</p>
 <p><code>xpathSApply()</code> uses base R’s <code>sapply()</code> to iterate over a list and return a vector.</p>
 <pre class="r"><code>xpathSApply(recs, &quot;//MedlineCitation/Article/ArticleTitle&quot;, xmlValue)</code></pre>
-<pre><code>##  [1] &quot;Correction: Carbohydrate Recognition Specificity of Trans-sialidase Lectin Domain from Trypanosoma congolense.&quot;                                                                                
-##  [2] &quot;Molecular Detection of Schistosome Infections with a Disposable Microfluidic Cassette.&quot;                                                                                                        
-##  [3] &quot;Trichinella spiralis Paramyosin Binds Human Complement C1q and Inhibits Classical Complement Activation.&quot;                                                                                      
-##  [4] &quot;Social Network Analysis As a Tool for Research Policy.&quot;                                                                                                                                        
-##  [5] &quot;Quantifying Poverty as a Driver of Ebola Transmission.&quot;                                                                                                                                        
-##  [6] &quot;Glycans from Fasciola hepatica Modulate the Host Immune Response and TLR-Induced Maturation of Dendritic Cells.&quot;                                                                               
-##  [7] &quot;Plasmodium malariae Infection Associated with a High Burden of Anemia: A Hospital-Based Surveillance Study.&quot;                                                                                   
-##  [8] &quot;Using Co-authorship Networks to Map and Analyse Global Neglected Tropical Disease Research with an Affiliation to Germany.&quot;                                                                    
-##  [9] &quot;Schistosoma mansoni Egg, Adult Male and Female Comparative Gene Expression Analysis and Identification of Novel Genes by RNA-Seq.&quot;                                                             
-## [10] &quot;The 1899 United States Kissing Bug Epidemic.&quot;                                                                                                                                                  
-## [11] &quot;The Schistosoma mansoni Cytochrome P450 (CYP3050A1) Is Essential for Worm Survival and Egg Development.&quot;                                                                                       
-## [12] &quot;Pregnancy Outcomes after a Mass Vaccination Campaign with an Oral Cholera Vaccine in Guinea: A Retrospective Cohort Study.&quot;                                                                    
-## [13] &quot;Systematic Review and Meta-analysis of the Impact of Chemical-Based Mollusciciding for Control of Schistosoma mansoni and S. haematobium Transmission.&quot;                                        
-## [14] &quot;Cissampelos pareira Linn: Natural Source of Potent Antiviral Activity against All Four Dengue Virus Serotypes.&quot;                                                                                
-## [15] &quot;Whole Genome Sequencing of Field Isolates Reveals Extensive Genetic Diversity in Plasmodium vivax from Colombia.&quot;                                                                              
-## [16] &quot;Immucillins ImmA and ImmH Are Effective and Non-toxic in the Treatment of Experimental Visceral Leishmaniasis.&quot;                                                                                
-## [17] &quot;A Library of Plasmodium vivax Recombinant Merozoite Proteins Reveals New Vaccine Candidates and Protein-Protein Interactions.&quot;                                                                 
-## [18] &quot;Identification and Characterization of Microsatellite Markers Derived from the Whole Genome Analysis of Taenia solium.&quot;                                                                        
-## [19] &quot;The Risk of Nosocomial Transmission of Rift Valley Fever.&quot;                                                                                                                                     
-## [20] &quot;Genomic and Proteomic Studies on the Mode of Action of Oxaboroles against the African Trypanosome.&quot;                                                                                            
-## [21] &quot;Generation of a Novel Bacteriophage Library Displaying scFv Antibody Fragments from the Natural Buffalo Host to Identify Antigens from Adult Schistosoma japonicum for Diagnostic Development.&quot;
-## [22] &quot;Earth Observation, Spatial Data Quality, and Neglected Tropical Diseases.&quot;                                                                                                                     
-## [23] &quot;A Spatiotemporal Database to Track Human Scrub Typhus Using the VectorMap Application.&quot;                                                                                                        
-## [24] &quot;Peridomestic Infection as a Determining Factor of Dengue Transmission.&quot;                                                                                                                        
-## [25] &quot;Characterization of the Paracoccidioides Hypoxia Response Reveals New Insights into Pathogenesis Mechanisms of This Important Human Pathogenic Fungus.&quot;</code></pre>
 <p>Antoher workflow for parsing these results is to use <code>entrez_summary()</code> and <code>extract_from_esummary()</code>.</p>
 <pre class="r"><code>esums &lt;- entrez_summary(db = &quot;pubmed&quot;, id = res$ids[1:25])</code></pre>
 <p>Again, we’ve used just a subset of the PubMed IDs retrieved from our original <code>entrez_search()</code>. Printing <code>esums</code> will show all of the elements that could be extracted.</p>
@@ -762,14 +737,13 @@ nuclinkid &lt;- yfmlinks2$links$genome_nuccore</code></pre>
 <h3>web_history</h3>
 <p>As mentioned above, NCBI places limits on large queries to its databases. However, the servers allow users to store long lists of IDs as “web history” objects. When we ran our original <code>entrez_search()</code> we toggled “use_history” to TRUE. Because we did that, our original search object contains a “web_history” element.</p>
 <pre class="r"><code>res$web_history</code></pre>
-<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_96591...)</code></pre>
+<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_31327...)</code></pre>
 <p>So if we wanted to retrieve all records from our original search, regardless of how many there are, we can pass the web history object in the “web_history” argument to <code>entrez_fetch()</code> rather than a list of IDs.</p>
 <pre class="r"><code>recs &lt;- entrez_fetch(db = &quot;pubmed&quot;, web_history = res$web_history, rettype = &quot;xml&quot;, parsed = TRUE)</code></pre>
 <p>Did we get all of the titles?</p>
 <pre class="r"><code>plosidtitles &lt;- xpathSApply(recs, &quot;//MedlineCitation/Article/ArticleTitle&quot;, xmlValue)
 
 length(plosidtitles) == res$count</code></pre>
-<pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="entrez_post" class="section level3">
 <h3><code>entrez_post()</code></h3>
@@ -777,7 +751,7 @@ length(plosidtitles) == res$count</code></pre>
 <pre class="r"><code>res &lt;- entrez_search(db = &quot;clinvar&quot;, term= &quot;atherosclerosis[Disease/Phenotype]&quot;)
 postids &lt;- entrez_post(db = &quot;clinvar&quot;, res$ids)
 postids</code></pre>
-<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_96888...)</code></pre>
+<pre><code>## Web history object (QueryKey = 1, WebEnv = NCID_1_27120...)</code></pre>
 </div>
 <div id="entrez_info" class="section level3">
 <h3><code>entrez_info()</code></h3>
@@ -790,15 +764,15 @@ postids</code></pre>
 ##     &lt;DbName&gt;mesh&lt;/DbName&gt;
 ##     &lt;MenuName&gt;MeSH&lt;/MenuName&gt;
 ##     &lt;Description&gt;MeSH Database&lt;/Description&gt;
-##     &lt;DbBuild&gt;Build171004-0355.1&lt;/DbBuild&gt;
-##     &lt;Count&gt;272755&lt;/Count&gt;
-##     &lt;LastUpdate&gt;2017/10/04 04:22&lt;/LastUpdate&gt;
+##     &lt;DbBuild&gt;Build171017-0315.1&lt;/DbBuild&gt;
+##     &lt;Count&gt;273016&lt;/Count&gt;
+##     &lt;LastUpdate&gt;2017/10/17 03:52&lt;/LastUpdate&gt;
 ##     &lt;FieldList&gt;
 ##       &lt;Field&gt;
 ##         &lt;Name&gt;ALL&lt;/Name&gt;
 ##         &lt;FullName&gt;All Fields&lt;/FullName&gt;
 ##         &lt;Description&gt;All terms from all searchable fields&lt;/Description&gt;
-##         &lt;TermCount&gt;2333897&lt;/TermCount&gt;
+##         &lt;TermCount&gt;2335278&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;N&lt;/SingleToken&gt;
@@ -831,7 +805,7 @@ postids</code></pre>
 ##         &lt;Name&gt;TN&lt;/Name&gt;
 ##         &lt;FullName&gt;Tree Number&lt;/FullName&gt;
 ##         &lt;Description&gt;Tree Number&lt;/Description&gt;
-##         &lt;TermCount&gt;302140&lt;/TermCount&gt;
+##         &lt;TermCount&gt;302401&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -853,7 +827,7 @@ postids</code></pre>
 ##         &lt;Name&gt;SUBS&lt;/Name&gt;
 ##         &lt;FullName&gt;Substance Name&lt;/FullName&gt;
 ##         &lt;Description&gt;Substance Name&lt;/Description&gt;
-##         &lt;TermCount&gt;581696&lt;/TermCount&gt;
+##         &lt;TermCount&gt;582168&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -864,7 +838,7 @@ postids</code></pre>
 ##         &lt;Name&gt;WORD&lt;/Name&gt;
 ##         &lt;FullName&gt;Text Word&lt;/FullName&gt;
 ##         &lt;Description&gt;Free text&lt;/Description&gt;
-##         &lt;TermCount&gt;1029283&lt;/TermCount&gt;
+##         &lt;TermCount&gt;1029749&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -897,7 +871,7 @@ postids</code></pre>
 ##         &lt;Name&gt;NOTE&lt;/Name&gt;
 ##         &lt;FullName&gt;Scope Note&lt;/FullName&gt;
 ##         &lt;Description&gt;Scope Note&lt;/Description&gt;
-##         &lt;TermCount&gt;446594&lt;/TermCount&gt;
+##         &lt;TermCount&gt;446780&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -908,7 +882,7 @@ postids</code></pre>
 ##         &lt;Name&gt;REG&lt;/Name&gt;
 ##         &lt;FullName&gt;Registry Number&lt;/FullName&gt;
 ##         &lt;Description&gt;Registry Number&lt;/Description&gt;
-##         &lt;TermCount&gt;100630&lt;/TermCount&gt;
+##         &lt;TermCount&gt;100605&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -919,7 +893,7 @@ postids</code></pre>
 ##         &lt;Name&gt;MULT&lt;/Name&gt;
 ##         &lt;FullName&gt;Multi&lt;/FullName&gt;
 ##         &lt;Description&gt;Multi&lt;/Description&gt;
-##         &lt;TermCount&gt;797996&lt;/TermCount&gt;
+##         &lt;TermCount&gt;798468&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;
@@ -941,7 +915,7 @@ postids</code></pre>
 ##         &lt;Name&gt;MHUI&lt;/Name&gt;
 ##         &lt;FullName&gt;MeSH Unique ID&lt;/FullName&gt;
 ##         &lt;Description&gt;NLM MeSH Browser Unique ID&lt;/Description&gt;
-##         &lt;TermCount&gt;272195&lt;/TermCount&gt;
+##         &lt;TermCount&gt;272456&lt;/TermCount&gt;
 ##         &lt;IsDate&gt;N&lt;/IsDate&gt;
 ##         &lt;IsNumerical&gt;N&lt;/IsNumerical&gt;
 ##         &lt;SingleToken&gt;Y&lt;/SingleToken&gt;

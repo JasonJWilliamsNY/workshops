@@ -867,18 +867,18 @@ yjoined &lt;-
 <p>Now we can determine what rows are different between <code>yjoined</code> and <code>ydat</code> using <code>anti_join</code>, which will return all of the rows that <em>do not</em> match.</p>
 <pre class="r"><code>anti_join(yjoined, ydat) </code></pre>
 <pre><code>## # A tibble: 866 x 7
-##    symbol systematic_name  nutrient  rate expression
-##     &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
-##  1   GAC1         YOR178C    Uracil  0.30         NA
-##  2  YPT53         YNL093W    Uracil  0.30         NA
-##  3   SSK1         YLR006C   Sulfate  0.05         NA
-##  4   &lt;NA&gt;         YML089C    Uracil  0.25         NA
-##  5   &lt;NA&gt;         YDR029W   Glucose  0.10         NA
-##  6   &lt;NA&gt;         YKL225W Phosphate  0.20         NA
-##  7   AHT1         YHR093W   Sulfate  0.15         NA
-##  8   &lt;NA&gt;         YGR107W   Sulfate  0.10         NA
-##  9   &lt;NA&gt;         YDR008C    Uracil  0.20         NA
-## 10   SEF1         YBL066C    Uracil  0.20         NA
+##    symbol systematic_name nutrient  rate expression
+##     &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;
+##  1   &lt;NA&gt;         YLL030C  Glucose  0.05         NA
+##  2   &lt;NA&gt;         YOR050C  Glucose  0.05         NA
+##  3   &lt;NA&gt;         YPR039W  Glucose  0.05         NA
+##  4   &lt;NA&gt;       YOL013W-B  Glucose  0.05         NA
+##  5  HXT12         YIL170W  Glucose  0.05         NA
+##  6   &lt;NA&gt;         YPR013C  Glucose  0.05         NA
+##  7   &lt;NA&gt;         YOR314W  Glucose  0.05         NA
+##  8   &lt;NA&gt;         YJL064W  Glucose  0.05         NA
+##  9   &lt;NA&gt;         YPR136C  Glucose  0.05         NA
+## 10   &lt;NA&gt;         YDR015C  Glucose  0.05         NA
 ## # ... with 856 more rows, and 2 more variables: bp &lt;chr&gt;, mf &lt;chr&gt;</code></pre>
 <p>Hmmmm … so <code>yjoined</code> has some rows that have missing (<code>NA</code>) expression values. Let’s try removing those and then comparing the data frame contents one more time.</p>
 <pre class="r"><code>yjoined &lt;-
