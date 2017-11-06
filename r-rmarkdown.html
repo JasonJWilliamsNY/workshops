@@ -402,10 +402,16 @@ div.tocify {
     <li>
       <a href="r-tidy.html">Tidying data</a>
     </li>
+    <li>
+      <a href="r-viz-gapminder.html">Data Visualization</a>
+    </li>
     <li class="divider"></li>
     <li class="dropdown-header">--- Homework ---</li>
     <li>
       <a href="r-dplyr-homework.html">Data Manipulation</a>
+    </li>
+    <li>
+      <a href="r-viz-homework.html">Data Visualization</a>
     </li>
   </ul>
 </li>
@@ -604,6 +610,9 @@ div.tocify {
 </div>
 <div id="authoring-rmarkdown-documents" class="section level2">
 <h2>Authoring RMarkdown documents</h2>
+<blockquote>
+<p><strong><em>Note</em></strong>: Before going any further, open up the options (Tools, Global Options), click the RMarkdown section, and <strong>uncheck</strong> the box, <em>“Show output inline for all R Markdown documents.”</em></p>
+</blockquote>
 <div id="from-scratch" class="section level3">
 <h3>From scratch</h3>
 <p>First, open RStudio. Create a new project. Quit RStudio, then launch RStudio using the project file (.Rproj) you just created.</p>
@@ -678,14 +687,14 @@ The years surveyed in this data include: 1952, 1957, 1962, 1967, 1972, 1977, 198
 <pre><code>---
 title: &quot;Gapminder Analysis&quot;
 author: &quot;Stephen Turner&quot;
-date: &quot;January 1, 2016&quot;
+date: &quot;January 1, 2017&quot;
 output: html_document
 ---</code></pre>
 <p>The stuff between the three <code>---</code>s is metadata. You can read more about what kind of metadata can be included in the <a href="http://rmarkdown.rstudio.com/">RMarkdown documentation</a>. Try clicking the little wrench icon and setting some options, like including a table of contents and figure captions. Notice how the metadata front matter changes.</p>
 <pre><code>---
 title: &quot;Gapminder analysis&quot;
 author: &quot;Stephen Turner&quot;
-date: &quot;January 1, 2016&quot;
+date: &quot;January 1, 2017&quot;
 output: 
   html_document: 
     fig_caption: yes
